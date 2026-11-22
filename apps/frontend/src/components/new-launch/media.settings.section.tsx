@@ -2,14 +2,14 @@
 
 import { FC, useCallback } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
-import { VideoFrame } from '@gitroom/react/helpers/video.frame';
-import { MediaSettingsIcon } from '@gitroom/frontend/components/ui/icons';
-import { MediaComponentInner } from '@gitroom/frontend/components/launches/helpers/media.settings.component';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
+import { VideoFrame } from '@postnode/react/helpers/video.frame';
+import { MediaSettingsIcon } from '@postnode/frontend/components/ui/icons';
+import { MediaComponentInner } from '@postnode/frontend/components/launches/helpers/media.settings.component';
 
 // the values the editor lets the user change: the global ones, or the ones
 // of a channel that was customized

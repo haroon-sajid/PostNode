@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 // Neutral placeholder logo followed by the product name
 export const LogoTextComponent = () => {

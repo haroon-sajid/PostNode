@@ -13,14 +13,14 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
-import { MediaDto } from '@gitroom/nestjs-libraries/dtos/media/media.dto';
+import { MediaDto } from '@postnode/nestjs-libraries/dtos/media/media.dto';
 import {
   allProviders,
   type AllProvidersSettings,
   EmptySettings,
-} from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
-import { ValidContent } from '@gitroom/helpers/utils/valid.images';
-import { sanitizePostContent } from '@gitroom/helpers/utils/sanitize.post.content';
+} from '@postnode/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
+import { ValidContent } from '@postnode/helpers/utils/valid.images';
+import { sanitizePostContent } from '@postnode/helpers/utils/sanitize.post.content';
 
 export class Integration {
   @IsDefined()

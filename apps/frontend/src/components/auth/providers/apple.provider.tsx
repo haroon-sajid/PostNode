@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 export const AppleProvider = () => {
   const fetch = useFetch();
   const t = useT();

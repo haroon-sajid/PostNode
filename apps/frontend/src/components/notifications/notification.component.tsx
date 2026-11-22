@@ -1,13 +1,13 @@
 'use client';
 
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import useSWR from 'swr';
 import { FC, useCallback, useState } from 'react';
 import clsx from 'clsx';
-import { newDayjs } from '@gitroom/frontend/components/layout/set.timezone';
+import { newDayjs } from '@postnode/frontend/components/layout/set.timezone';
 import { useClickAway } from '@uidotdev/usehooks';
-import ReactLoading from '@gitroom/frontend/components/layout/loading';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import ReactLoading from '@postnode/frontend/components/layout/loading';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 // notifications are plain text, the urls in them become short links
 function replaceLinks(text: string) {
   const urlRegex =

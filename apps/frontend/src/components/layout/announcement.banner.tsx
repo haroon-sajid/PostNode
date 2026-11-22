@@ -2,13 +2,13 @@
 
 import { FC, useCallback, useState } from 'react';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { Button } from '@gitroom/react/form/button';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { getTimezone } from '@gitroom/frontend/components/layout/set.timezone';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { Button } from '@postnode/react/form/button';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { getTimezone } from '@postnode/frontend/components/layout/set.timezone';
 
 type AnnouncementColor = 'INFO' | 'WARNING' | 'ERROR';
 

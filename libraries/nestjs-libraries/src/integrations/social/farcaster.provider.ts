@@ -3,18 +3,18 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import dayjs from 'dayjs';
 import {
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import { NeynarAPIClient } from '@neynar/nodejs-sdk';
 import { Integration } from '@prisma/client';
-import { FarcasterDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/farcaster.dto';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
+import { FarcasterDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/farcaster.dto';
+import { Tool } from '@postnode/nestjs-libraries/integrations/tool.decorator';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
 import { mnemonicToAccount } from 'viem/accounts';
 import { toDataURL } from 'qrcode';
 

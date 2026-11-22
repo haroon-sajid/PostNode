@@ -1,16 +1,16 @@
-import { CreateOrgUserDto } from '@gitroom/nestjs-libraries/dtos/auth/create.org.user.dto';
+import { CreateOrgUserDto } from '@postnode/nestjs-libraries/dtos/auth/create.org.user.dto';
 import { HttpException, Injectable } from '@nestjs/common';
-import { OrganizationRepository } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.repository';
-import { NotificationService } from '@gitroom/nestjs-libraries/database/prisma/notifications/notification.service';
-import { AddTeamMemberDto } from '@gitroom/nestjs-libraries/dtos/settings/add.team.member.dto';
-import { AdminAddTeamMemberDto } from '@gitroom/nestjs-libraries/dtos/settings/admin.add.team.member.dto';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
+import { OrganizationRepository } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.repository';
+import { NotificationService } from '@postnode/nestjs-libraries/database/prisma/notifications/notification.service';
+import { AddTeamMemberDto } from '@postnode/nestjs-libraries/dtos/settings/add.team.member.dto';
+import { AdminAddTeamMemberDto } from '@postnode/nestjs-libraries/dtos/settings/admin.add.team.member.dto';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
 import dayjs from 'dayjs';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
 import { Organization, ShortLinkPreference, User } from '@prisma/client';
-import { AutopostService } from '@gitroom/nestjs-libraries/database/prisma/autopost/autopost.service';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { AutopostService } from '@postnode/nestjs-libraries/database/prisma/autopost/autopost.service';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 @Injectable()
 export class OrganizationService {

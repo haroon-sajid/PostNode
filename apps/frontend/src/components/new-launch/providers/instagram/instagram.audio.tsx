@@ -1,10 +1,10 @@
 'use client';
 
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { useCustomProviderFunction } from '@gitroom/frontend/components/launches/helpers/use.custom.provider.function';
-import { Select } from '@gitroom/react/form/select';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { useCustomProviderFunction } from '@postnode/frontend/components/launches/helpers/use.custom.provider.function';
+import { Select } from '@postnode/react/form/select';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 import clsx from 'clsx';
 
 interface AudioResult {

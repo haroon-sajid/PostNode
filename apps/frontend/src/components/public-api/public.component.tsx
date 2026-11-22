@@ -4,13 +4,13 @@ import { useState, useCallback } from 'react';
 import { useSWRConfig } from 'swr';
 import { useUser } from '../layout/user.context';
 import copy from 'copy-to-clipboard';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useDecisionModal } from '@gitroom/frontend/components/layout/new-modal';
-import { McpClientIcon } from '@gitroom/frontend/components/public-api/mcp.client.icons';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useDecisionModal } from '@postnode/frontend/components/layout/new-modal';
+import { McpClientIcon } from '@postnode/frontend/components/public-api/mcp.client.icons';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 import clsx from 'clsx';
 
 // Remote clients can't set headers, they get a URL to paste (hint = where)
@@ -306,7 +306,7 @@ const McpSection = ({
           </div>
           <div className="text-[13px] text-customColor18 mt-[2px]">
             {t(
-              'connect_your_mcp_client_to_postiz_to_schedule_your_posts_faster',
+              'connect_your_mcp_client_to_schedule_your_posts_faster',
               'Connect {{appName}} MCP server to your client (Http streaming) to schedule your posts faster.'
             )}
           </div>
@@ -485,7 +485,7 @@ const PublicApiContent = () => {
             </div>
             <div className="text-[13px] text-customColor18 mt-[2px]">
               {t(
-                'use_postiz_api_to_integrate_with_your_tools',
+                'use_the_api_to_integrate_with_your_tools',
                 'Use {{appName}} API to integrate with your tools.'
               )}
             </div>

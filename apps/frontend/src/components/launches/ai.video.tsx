@@ -1,17 +1,17 @@
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postnode/react/form/button';
 import React, { FC, useCallback, useState } from 'react';
 import clsx from 'clsx';
-import Loading from '@gitroom/frontend/components/layout/loading';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+import Loading from '@postnode/frontend/components/layout/loading';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
 import useSWR from 'swr';
-import { VideoWrapper } from '@gitroom/frontend/components/videos/video.render.component';
+import { VideoWrapper } from '@postnode/frontend/components/videos/video.render.component';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { VideoContextWrapper } from '@gitroom/frontend/components/videos/video.context.wrapper';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { VideoContextWrapper } from '@postnode/frontend/components/videos/video.context.wrapper';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
 import { createPortal } from 'react-dom';
 
 export const Modal: FC<{

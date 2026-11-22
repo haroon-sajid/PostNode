@@ -1,17 +1,17 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { AllProvidersSettings } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
+import { IntegrationService } from '@postnode/nestjs-libraries/database/prisma/integrations/integration.service';
+import { PostsService } from '@postnode/nestjs-libraries/database/prisma/posts/posts.service';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { AllProvidersSettings } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
 import { Integration } from '@prisma/client';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
 import {
   ValidUrlExtension,
   ValidUrlPath,
-} from '@gitroom/helpers/utils/valid.url.path';
+} from '@postnode/helpers/utils/valid.url.path';
 
 const validUrlExtension = new ValidUrlExtension();
 const validUrlPath = new ValidUrlPath();

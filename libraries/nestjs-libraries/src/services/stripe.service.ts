@@ -1,25 +1,30 @@
 import Stripe from 'stripe';
 import { BadRequestException } from '@nestjs/common';
 import { Organization, User } from '@prisma/client';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { BillingSubscribeDto } from '@gitroom/nestjs-libraries/dtos/billing/billing.subscribe.dto';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { OrganizationService } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.service';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { BillingSubscribeDto } from '@postnode/nestjs-libraries/dtos/billing/billing.subscribe.dto';
 import { groupBy, omit } from 'lodash';
 import dayjs from 'dayjs';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { UsersService } from '@gitroom/nestjs-libraries/database/prisma/users/users.service';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
+import { UsersService } from '@postnode/nestjs-libraries/database/prisma/users/users.service';
 import {
   PaymentInvoice,
   PaymentPlatform,
   PaymentProvider,
   PaymentProviderAbstract,
-} from '@gitroom/nestjs-libraries/services/payment/payment.provider.interface';
+} from '@postnode/nestjs-libraries/services/payment/payment.provider.interface';
 
-import { STRIPE_PROVIDER } from '@gitroom/nestjs-libraries/services/payment/payment.providers';
+import { STRIPE_PROVIDER } from '@postnode/nestjs-libraries/services/payment/payment.providers';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_nothing');
+
+// Tags this app's objects in the Stripe account (metadata.service), so events
+// of other services in the same account are ignored. A fixed id, not the
+// product name: never change it once billing is live
+const STRIPE_SERVICE = 'postnode';
 
 @PaymentProvider({ provider: STRIPE_PROVIDER })
 export class StripeService extends PaymentProviderAbstract {
@@ -52,7 +57,7 @@ export class StripeService extends PaymentProviderAbstract {
     if (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      event?.data?.object?.metadata?.service !== 'gitroom' &&
+      event?.data?.object?.metadata?.service !== STRIPE_SERVICE &&
       event.type !== 'invoice.payment_succeeded'
     ) {
       return { ok: true };
@@ -576,7 +581,7 @@ export class StripeService extends PaymentProviderAbstract {
       for (const s of subscriptions) {
         const updated = await stripe.subscriptions.update(s.id, {
           cancel_at_period_end: false,
-          metadata: { service: 'gitroom', id },
+          metadata: { service: STRIPE_SERVICE, id },
         });
         cancel_at = cancel_at || updated.cancel_at;
       }
@@ -621,7 +626,7 @@ export class StripeService extends PaymentProviderAbstract {
     for (const s of subscriptions) {
       const updated = await stripe.subscriptions.update(s.id, {
         cancel_at_period_end: true,
-        metadata: { service: 'gitroom', id },
+        metadata: { service: STRIPE_SERVICE, id },
       });
       if (updated.cancel_at && (!cancel_at || updated.cancel_at < cancel_at)) {
         cancel_at = updated.cancel_at;
@@ -765,7 +770,7 @@ export class StripeService extends PaymentProviderAbstract {
       subscription_data: {
         ...(allowTrial ? { trial_period_days: 7 } : {}),
         metadata: {
-          service: 'gitroom',
+          service: STRIPE_SERVICE,
           ...body,
           userId,
           uniqueId,
@@ -807,7 +812,7 @@ export class StripeService extends PaymentProviderAbstract {
       subscription_data: {
         ...(allowTrial ? { trial_period_days: 7 } : {}),
         metadata: {
-          service: 'gitroom',
+          service: STRIPE_SERVICE,
           ...body,
           userId,
           uniqueId,
@@ -1197,7 +1202,7 @@ export class StripeService extends PaymentProviderAbstract {
       await stripe.subscriptions.update(currentUserSubscription.data[0].id, {
         cancel_at_period_end: false,
         metadata: {
-          service: 'gitroom',
+          service: STRIPE_SERVICE,
           ...body,
           userId,
           id,
@@ -1264,7 +1269,7 @@ export class StripeService extends PaymentProviderAbstract {
         { expand: ['discounts.source.coupon'] }
       );
       if (
-        subscription.metadata?.service !== 'gitroom' ||
+        subscription.metadata?.service !== STRIPE_SERVICE ||
         subscription.status !== 'canceled'
       ) {
         return;
@@ -1460,7 +1465,7 @@ export class StripeService extends PaymentProviderAbstract {
           limit: 100,
         })
       ).data
-        .filter((f) => f.metadata?.service === 'gitroom')
+        .filter((f) => f.metadata?.service === STRIPE_SERVICE)
         .map((f) => f.id);
       if (!cancelled.length) {
         return;
@@ -1762,7 +1767,7 @@ export class StripeService extends PaymentProviderAbstract {
       ...(body.months === 1
         ? { duration: 'once' }
         : { duration: 'repeating', duration_in_months: body.months }),
-      metadata: { service: 'gitroom', organizationId },
+      metadata: { service: STRIPE_SERVICE, organizationId },
     });
 
     await stripe.subscriptions.update(stripeSubscription.id, {

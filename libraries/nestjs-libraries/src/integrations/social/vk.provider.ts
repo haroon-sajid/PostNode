@@ -3,19 +3,19 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import dayjs from 'dayjs';
 import {
   BadBody,
   RefreshToken,
   SocialAbstract,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import { createHash, randomBytes } from 'crypto';
 import FormDataNew from 'form-data';
 import mime from 'mime-types';
 import { Integration } from '@prisma/client';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 
 export class VkProvider extends SocialAbstract implements SocialProvider {
   override maxConcurrentJob = 5; // VK limits are per user token

@@ -3,15 +3,15 @@
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { ThreadFinisher } from '@gitroom/frontend/components/new-launch/finisher/thread.finisher';
-import { Select } from '@gitroom/react/form/select';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { XDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/x.dto';
-import { Input } from '@gitroom/react/form/input';
-import { Checkbox } from '@gitroom/react/form/checkbox';
-import { MediaComponent } from '@gitroom/frontend/components/media/media.component';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { ThreadFinisher } from '@postnode/frontend/components/new-launch/finisher/thread.finisher';
+import { Select } from '@postnode/react/form/select';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { XDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/x.dto';
+import { Input } from '@postnode/react/form/input';
+import { Checkbox } from '@postnode/react/form/checkbox';
+import { MediaComponent } from '@postnode/frontend/components/media/media.component';
 
 const whoCanReply = [
   {

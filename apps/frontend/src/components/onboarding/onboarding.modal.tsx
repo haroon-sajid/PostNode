@@ -1,20 +1,20 @@
 'use client';
 
 import React, { FC, Fragment, useCallback, useMemo, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import useSWR from 'swr';
 import { orderBy } from 'lodash';
 import clsx from 'clsx';
-import SafeImage from '@gitroom/react/helpers/safe.image';
+import SafeImage from '@postnode/react/helpers/safe.image';
 import {
   isBrandMark,
   PlatformIcon,
-} from '@gitroom/frontend/components/ui/platform.icon.component';
-import { AddProviderComponent } from '@gitroom/frontend/components/launches/add.provider.component';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+} from '@postnode/frontend/components/ui/platform.icon.component';
+import { AddProviderComponent } from '@postnode/frontend/components/launches/add.provider.component';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { useVariables } from '@postnode/react/helpers/variable.context';
 import {
   AnyMcpClient,
   CopyButton,
@@ -22,8 +22,8 @@ import {
   McpAuth,
   McpClient,
   mcpClients,
-} from '@gitroom/frontend/components/public-api/public.component';
-import { McpClientIcon } from '@gitroom/frontend/components/public-api/mcp.client.icons';
+} from '@postnode/frontend/components/public-api/public.component';
+import { McpClientIcon } from '@postnode/frontend/components/public-api/mcp.client.icons';
 
 interface OnboardingModalProps {
   onClose: () => void;

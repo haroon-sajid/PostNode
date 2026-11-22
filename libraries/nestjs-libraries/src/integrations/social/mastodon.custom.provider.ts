@@ -2,12 +2,12 @@ import {
   ClientInformation,
   PostDetails,
   PostResponse,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { MastodonProvider } from '@gitroom/nestjs-libraries/integrations/social/mastodon.provider';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
-import { getSsrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { MastodonProvider } from '@postnode/nestjs-libraries/integrations/social/mastodon.provider';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
+import { getAppName } from '@postnode/helpers/utils/app.name';
+import { getSsrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
 import { Integration } from '@prisma/client';
 
 export class MastodonCustomProvider extends MastodonProvider {

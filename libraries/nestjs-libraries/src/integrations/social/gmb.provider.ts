@@ -4,20 +4,20 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library/build/src/auth/oauth2client';
 import {
   BadBody,
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import * as process from 'node:process';
 import dayjs from 'dayjs';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { DashboardFunction } from '@gitroom/nestjs-libraries/integrations/dashboard.function.decorator';
-import { GmbSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/gmb.settings.dto';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { DashboardFunction } from '@postnode/nestjs-libraries/integrations/dashboard.function.decorator';
+import { GmbSettingsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/gmb.settings.dto';
 
 const clientAndGmb = () => {
   const client = new google.auth.OAuth2({

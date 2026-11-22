@@ -1,16 +1,16 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Integrations } from '@gitroom/frontend/components/launches/calendar.context';
-import { useMoveToIntegrationListener } from '@gitroom/frontend/components/launches/helpers/use.move.to.integration';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
+import { Integrations } from '@postnode/frontend/components/launches/calendar.context';
+import { useMoveToIntegrationListener } from '@postnode/frontend/components/launches/helpers/use.move.to.integration';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
 import clsx from 'clsx';
-import SafeImage from '@gitroom/react/helpers/safe.image';
+import SafeImage from '@postnode/react/helpers/safe.image';
 import {
   isBrandMark,
   PlatformIcon,
-} from '@gitroom/frontend/components/ui/platform.icon.component';
+} from '@postnode/frontend/components/ui/platform.icon.component';
 import { useCopilotAction, useCopilotReadable } from '@copilotkit/react-core';
-import { useStateCallback } from '@gitroom/react/helpers/use.state.callback';
-import { timer } from '@gitroom/helpers/utils/timer';
+import { useStateCallback } from '@postnode/react/helpers/use.state.callback';
+import { timer } from '@postnode/helpers/utils/timer';
 export const PickPlatforms: FC<{
   integrations: Integrations[];
   selectedIntegrations: Integrations[];

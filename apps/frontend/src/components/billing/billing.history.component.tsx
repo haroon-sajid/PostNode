@@ -4,10 +4,10 @@ import React, { FC, useCallback, useMemo, useState } from 'react';
 import useSWR from 'swr';
 import clsx from 'clsx';
 import { capitalize } from 'lodash';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { Select } from '@gitroom/react/form/select';
-import { fromUtc } from '@gitroom/frontend/components/layout/set.timezone';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { Select } from '@postnode/react/form/select';
+import { fromUtc } from '@postnode/frontend/components/layout/set.timezone';
 
 interface Invoice {
   id: string;

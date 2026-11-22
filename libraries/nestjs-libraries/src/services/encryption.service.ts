@@ -5,10 +5,10 @@ import {
   createHash,
   randomBytes,
 } from 'crypto';
-import { EncryptionInterface } from '@gitroom/nestjs-libraries/encryption/encryption.interface';
-import { EmptyProvider } from '@gitroom/nestjs-libraries/encryption/empty.provider';
-import { LocalProvider } from '@gitroom/nestjs-libraries/encryption/local.provider';
-import { AwsKmsProvider } from '@gitroom/nestjs-libraries/encryption/aws.kms.provider';
+import { EncryptionInterface } from '@postnode/nestjs-libraries/encryption/encryption.interface';
+import { EmptyProvider } from '@postnode/nestjs-libraries/encryption/empty.provider';
+import { LocalProvider } from '@postnode/nestjs-libraries/encryption/local.provider';
+import { AwsKmsProvider } from '@postnode/nestjs-libraries/encryption/aws.kms.provider';
 
 // An encrypted value is stored as enc:v1:<key id>:<base64 of iv + data + tag>,
 // anything without the prefix is a plain value that was stored before the

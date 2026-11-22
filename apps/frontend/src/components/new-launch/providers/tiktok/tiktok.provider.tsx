@@ -7,18 +7,18 @@ import {
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { TikTokDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { Select } from '@gitroom/react/form/select';
-import { Checkbox } from '@gitroom/react/form/checkbox';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { TikTokDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { Select } from '@postnode/react/form/select';
+import { Checkbox } from '@postnode/react/form/checkbox';
 import clsx from 'clsx';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { Input } from '@gitroom/react/form/input';
-import { TiktokPreview } from '@gitroom/frontend/components/new-launch/providers/tiktok/tiktok.preview';
-import { TikTokMusicSelector } from '@gitroom/frontend/components/new-launch/providers/tiktok/tiktok.music';
-import { TikTokLocationSelector } from '@gitroom/frontend/components/new-launch/providers/tiktok/tiktok.location';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { Input } from '@postnode/react/form/input';
+import { TiktokPreview } from '@postnode/frontend/components/new-launch/providers/tiktok/tiktok.preview';
+import { TikTokMusicSelector } from '@postnode/frontend/components/new-launch/providers/tiktok/tiktok.music';
+import { TikTokLocationSelector } from '@postnode/frontend/components/new-launch/providers/tiktok/tiktok.location';
 
 const TikTokSettings: FC<{
   values?: any;

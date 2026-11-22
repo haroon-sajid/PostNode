@@ -5,12 +5,12 @@ import {
   PaymentPlatform,
   PaymentProvider,
   PaymentProviderAbstract,
-} from '@gitroom/nestjs-libraries/services/payment/payment.provider.interface';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
+} from '@postnode/nestjs-libraries/services/payment/payment.provider.interface';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { OrganizationService } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.service';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
 
-import { REVENUECAT_PROVIDER } from '@gitroom/nestjs-libraries/services/payment/payment.providers';
+import { REVENUECAT_PROVIDER } from '@postnode/nestjs-libraries/services/payment/payment.providers';
 
 interface RevenueCatSubscription {
   expires_date: string | null;
@@ -27,7 +27,7 @@ interface RevenueCatSubscription {
 // The webhook and the app only tell us *which* subscriber to re-check; we always
 // load the subscriber from the API instead of trusting the event payload.
 // app_user_id === organization id (the app calls Purchases.logIn(orgId)).
-// Product ids end with <tier>.<period> or <tier>_<period>, e.g. com.postiz.mob.pro.yearly
+// Product ids end with <tier>.<period> or <tier>_<period>, e.g. com.postnode.mob.pro.yearly
 @PaymentProvider({ provider: REVENUECAT_PROVIDER })
 export class RevenueCatProvider extends PaymentProviderAbstract {
   platform: PaymentPlatform = 'mobile';

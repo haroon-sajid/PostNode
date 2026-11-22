@@ -5,7 +5,7 @@ import {
   proxyActivities,
   sleep,
 } from '@temporalio/workflow';
-import { EmailActivity } from '@gitroom/orchestrator/activities/email.activity';
+import { EmailActivity } from '@postnode/orchestrator/activities/email.activity';
 
 const { sendEmailAsync, getUserOrgs, setStreak, getLastPublishDate } =
   proxyActivities<EmailActivity>({

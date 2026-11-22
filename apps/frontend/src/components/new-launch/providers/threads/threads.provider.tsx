@@ -3,12 +3,12 @@
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { ThreadFinisher } from '@gitroom/frontend/components/new-launch/finisher/thread.finisher';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { ThreadsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/threads.dto';
-import { Checkbox } from '@gitroom/react/form/checkbox';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { ThreadFinisher } from '@postnode/frontend/components/new-launch/finisher/thread.finisher';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { ThreadsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/threads.dto';
+import { Checkbox } from '@postnode/react/form/checkbox';
 const SettingsComponent = () => {
   const t = useT();
   const { register } = useSettings();

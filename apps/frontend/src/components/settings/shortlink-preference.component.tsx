@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import useSWR from 'swr';
-import { Select } from '@gitroom/react/form/select';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { Select } from '@postnode/react/form/select';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 
 type ShortLinkPreference = 'ASK' | 'YES' | 'NO';
 

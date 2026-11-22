@@ -1,13 +1,13 @@
 'use client';
 
 import { FC, Fragment, useCallback } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import useSWR from 'swr';
-import { Button } from '@gitroom/react/form/button';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { getTimezone } from '@gitroom/frontend/components/layout/set.timezone';
+import { Button } from '@postnode/react/form/button';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { getTimezone } from '@postnode/frontend/components/layout/set.timezone';
 
 const useApprovedApps = () => {
   const fetch = useFetch();

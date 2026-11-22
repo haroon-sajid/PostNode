@@ -1,4 +1,4 @@
-import { ConnectLink } from '@gitroom/frontend/components/launches/connect.link';
+import { ConnectLink } from '@postnode/frontend/components/launches/connect.link';
 
 export const dynamic = 'force-dynamic';
 

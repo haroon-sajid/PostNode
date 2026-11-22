@@ -2,10 +2,10 @@
 
 import { FC, useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Logo } from '@gitroom/frontend/components/new-layout/logo';
-import { OAuthSelfHosted } from '@gitroom/frontend/components/oauth/self.hosted.component';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { Logo } from '@postnode/frontend/components/new-layout/logo';
+import { OAuthSelfHosted } from '@postnode/frontend/components/oauth/self.hosted.component';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
   const searchParams = useSearchParams();

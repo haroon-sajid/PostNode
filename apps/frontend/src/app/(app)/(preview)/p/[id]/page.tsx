@@ -1,21 +1,21 @@
-import { internalFetch } from '@gitroom/helpers/utils/internal.fetch';
-import { sanitizePostContent } from '@gitroom/helpers/utils/sanitize.post.content';
+import { internalFetch } from '@postnode/helpers/utils/internal.fetch';
+import { sanitizePostContent } from '@postnode/helpers/utils/sanitize.post.content';
 export const dynamic = 'force-dynamic';
 import { Metadata } from 'next';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
-import SafeImage from '@gitroom/react/helpers/safe.image';
-import { PlatformIcon } from '@gitroom/frontend/components/ui/platform.icon.component';
+import { getAppName } from '@postnode/helpers/utils/app.name';
+import SafeImage from '@postnode/react/helpers/safe.image';
+import { PlatformIcon } from '@postnode/frontend/components/ui/platform.icon.component';
 import Link from 'next/link';
-import { CommentsComponents } from '@gitroom/frontend/components/preview/comments.components';
-import { PreviewCommentsProvider } from '@gitroom/frontend/components/preview/preview.comments.context';
-import { PostContentClient } from '@gitroom/frontend/components/preview/post.content.client';
+import { CommentsComponents } from '@postnode/frontend/components/preview/comments.components';
+import { PreviewCommentsProvider } from '@postnode/frontend/components/preview/preview.comments.context';
+import { PostContentClient } from '@postnode/frontend/components/preview/post.content.client';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { VideoOrImage } from '@gitroom/react/helpers/video.or.image';
-import { CopyClient } from '@gitroom/frontend/components/preview/copy.client';
-import { getT } from '@gitroom/react/translation/get.translation.service.backend';
-import { RenderPreviewDateClient } from '@gitroom/frontend/components/preview/render.preview.date.client';
-import { CreationMethodBadge } from '@gitroom/frontend/components/launches/creation.method.badge';
+import { VideoOrImage } from '@postnode/react/helpers/video.or.image';
+import { CopyClient } from '@postnode/frontend/components/preview/copy.client';
+import { getT } from '@postnode/react/translation/get.translation.service.backend';
+import { RenderPreviewDateClient } from '@postnode/frontend/components/preview/render.preview.date.client';
+import { CreationMethodBadge } from '@postnode/frontend/components/launches/creation.method.badge';
 
 dayjs.extend(utc);
 export const metadata: Metadata = {

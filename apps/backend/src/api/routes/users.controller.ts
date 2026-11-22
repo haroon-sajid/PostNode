@@ -8,28 +8,28 @@ import {
   Req,
   Res,
 } from '@nestjs/common';
-import { GetUserFromRequest } from '@gitroom/nestjs-libraries/user/user.from.request';
+import { GetUserFromRequest } from '@postnode/nestjs-libraries/user/user.from.request';
 import { Organization, User } from '@prisma/client';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { GetOrgFromRequest } from '@gitroom/nestjs-libraries/user/org.from.request';
-import { PaymentService } from '@gitroom/nestjs-libraries/services/payment/payment.service';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { GetOrgFromRequest } from '@postnode/nestjs-libraries/user/org.from.request';
+import { PaymentService } from '@postnode/nestjs-libraries/services/payment/payment.service';
 import { Response, Request } from 'express';
-import { AuthService } from '@gitroom/backend/services/auth/auth.service';
-import { AuthService as AuthChecker } from '@gitroom/helpers/auth/auth.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { CheckPolicies } from '@gitroom/backend/services/auth/permissions/permissions.ability';
-import { getCookieUrlFromDomain } from '@gitroom/helpers/subdomain/subdomain.management';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { AuthService } from '@postnode/backend/services/auth/auth.service';
+import { AuthService as AuthChecker } from '@postnode/helpers/auth/auth.service';
+import { OrganizationService } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.service';
+import { CheckPolicies } from '@postnode/backend/services/auth/permissions/permissions.ability';
+import { getCookieUrlFromDomain } from '@postnode/helpers/subdomain/subdomain.management';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
 import { ApiTags } from '@nestjs/swagger';
-import { UsersService } from '@gitroom/nestjs-libraries/database/prisma/users/users.service';
-import { UserDetailDto } from '@gitroom/nestjs-libraries/dtos/users/user.details.dto';
-import { EmailNotificationsDto } from '@gitroom/nestjs-libraries/dtos/users/email-notifications.dto';
-import { TimezoneDto } from '@gitroom/nestjs-libraries/dtos/users/timezone.dto';
-import { HttpForbiddenException } from '@gitroom/nestjs-libraries/services/exception.filter';
+import { UsersService } from '@postnode/nestjs-libraries/database/prisma/users/users.service';
+import { UserDetailDto } from '@postnode/nestjs-libraries/dtos/users/user.details.dto';
+import { EmailNotificationsDto } from '@postnode/nestjs-libraries/dtos/users/email-notifications.dto';
+import { TimezoneDto } from '@postnode/nestjs-libraries/dtos/users/timezone.dto';
+import { HttpForbiddenException } from '@postnode/nestjs-libraries/services/exception.filter';
 import {
   AuthorizationActions,
   Sections,
-} from '@gitroom/backend/services/auth/permissions/permission.exception.class';
+} from '@postnode/backend/services/auth/permissions/permission.exception.class';
 
 @ApiTags('User')
 @Controller('/user')

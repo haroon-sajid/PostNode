@@ -1,10 +1,10 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
-import { UPLOAD_WIDGET_URI } from '@gitroom/nestjs-libraries/chat/ui/upload.widget';
+import { MediaService } from '@postnode/nestjs-libraries/database/prisma/media/media.service';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
+import { UPLOAD_WIDGET_URI } from '@postnode/nestjs-libraries/chat/ui/upload.widget';
 
 @Injectable()
 export class UploadWidgetTool implements AgentToolInterface {

@@ -3,13 +3,13 @@
 import 'reflect-metadata';
 import { FC, useCallback } from 'react';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import { useParams } from 'next/navigation';
-import { AddEditModal } from '@gitroom/frontend/components/new-launch/add.edit.modal';
+import { AddEditModal } from '@postnode/frontend/components/new-launch/add.edit.modal';
 import {
   fromUtc,
   newDayjs,
-} from '@gitroom/frontend/components/layout/set.timezone';
+} from '@postnode/frontend/components/layout/set.timezone';
 export const StandaloneModal: FC = () => {
   const fetch = useFetch();
   const params = useParams<{ platform: string }>();

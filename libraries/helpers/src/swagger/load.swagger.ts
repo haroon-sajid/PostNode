@@ -1,6 +1,6 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export const loadSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()

@@ -1,10 +1,10 @@
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { textSlicer } from '@gitroom/helpers/utils/count.length';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { textSlicer } from '@postnode/helpers/utils/count.length';
 import { FC } from 'react';
-import { VideoOrImage } from '@gitroom/react/helpers/video.or.image';
+import { VideoOrImage } from '@postnode/react/helpers/video.or.image';
 
 const Icons = () => {
   return (

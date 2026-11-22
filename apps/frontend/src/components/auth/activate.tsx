@@ -1,10 +1,10 @@
 'use client';
 
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Button } from '@gitroom/react/form/button';
-import { Input } from '@gitroom/react/form/input';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { Button } from '@postnode/react/form/button';
+import { Input } from '@postnode/react/form/input';
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 

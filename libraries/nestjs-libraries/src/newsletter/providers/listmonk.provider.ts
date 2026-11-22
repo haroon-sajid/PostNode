@@ -1,5 +1,5 @@
-import { NewsletterInterface } from '@gitroom/nestjs-libraries/newsletter/newsletter.interface';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { NewsletterInterface } from '@postnode/nestjs-libraries/newsletter/newsletter.interface';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export class ListmonkProvider implements NewsletterInterface {
   name = 'listmonk';

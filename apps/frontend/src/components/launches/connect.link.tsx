@@ -3,11 +3,11 @@
 import { FC, ReactNode, useCallback, useState } from 'react';
 import useSWR from 'swr';
 import { HttpStatusCode } from 'axios';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { PlatformIcon } from '@gitroom/frontend/components/ui/platform.icon.component';
-import { LogoTextComponent } from '@gitroom/frontend/components/ui/logo-text.component';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { PlatformIcon } from '@postnode/frontend/components/ui/platform.icon.component';
+import { LogoTextComponent } from '@postnode/frontend/components/ui/logo-text.component';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 interface ConnectLinkDetails {
   identifier: string;

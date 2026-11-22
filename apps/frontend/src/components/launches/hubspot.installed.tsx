@@ -2,8 +2,8 @@
 
 import { FC, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useDecisionModal } from '@gitroom/frontend/components/layout/new-modal';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useDecisionModal } from '@postnode/frontend/components/layout/new-modal';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 
 // /oauth/hubspot/callback sends people here after they install the app in
 // HubSpot, and the calendar alone doesn't say what just happened

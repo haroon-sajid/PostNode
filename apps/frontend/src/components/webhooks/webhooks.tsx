@@ -1,21 +1,21 @@
 'use client';
 
 import React, { FC, Fragment, useCallback, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import useSWR from 'swr';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { Button } from '@gitroom/react/form/button';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { Input } from '@gitroom/react/form/input';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { Button } from '@postnode/react/form/button';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { Input } from '@postnode/react/form/input';
 import { FormProvider, useForm } from 'react-hook-form';
 import { array, object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Select } from '@gitroom/react/form/select';
-import { PickPlatforms } from '@gitroom/frontend/components/launches/helpers/pick.platform.component';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { Select } from '@postnode/react/form/select';
+import { PickPlatforms } from '@postnode/frontend/components/launches/helpers/pick.platform.component';
+import { useToaster } from '@postnode/react/toaster/toaster';
 import clsx from 'clsx';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 
 export const Webhooks: FC = () => {
   const fetch = useFetch();
@@ -65,7 +65,7 @@ export const Webhooks: FC = () => {
       </h3>
       <div className="text-customColor18 mt-[4px]">
         {t(
-          'webhooks_are_a_way_to_get_notified_when_something_happens_in_postiz_via_an_http_request',
+          'webhooks_are_a_way_to_get_notified_when_something_happens_in_the_app_via_an_http_request',
           'Webhooks are a way to get notified when something happens in {{appName}} via\n        an HTTP request.'
         )}
       </div>

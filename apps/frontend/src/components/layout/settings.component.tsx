@@ -1,7 +1,7 @@
 'use client';
 import 'reflect-metadata';
 
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
 import React, {
   FC,
   Ref,
@@ -11,31 +11,31 @@ import React, {
   useState,
 } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { showMediaBox } from '@gitroom/frontend/components/media/media.component';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { showMediaBox } from '@postnode/frontend/components/media/media.component';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import { classValidatorResolver } from '@hookform/resolvers/class-validator';
-import { UserDetailDto } from '@gitroom/nestjs-libraries/dtos/users/user.details.dto';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { UserDetailDto } from '@postnode/nestjs-libraries/dtos/users/user.details.dto';
+import { useToaster } from '@postnode/react/toaster/toaster';
 import { useSWRConfig } from 'swr';
 import clsx from 'clsx';
-import { TeamsComponent } from '@gitroom/frontend/components/settings/teams.component';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { LogoutComponent } from '@gitroom/frontend/components/layout/logout.component';
+import { TeamsComponent } from '@postnode/frontend/components/settings/teams.component';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { LogoutComponent } from '@postnode/frontend/components/layout/logout.component';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { PublicComponent } from '@gitroom/frontend/components/public-api/public.component';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { PublicComponent } from '@postnode/frontend/components/public-api/public.component';
 import Link from 'next/link';
-import { Webhooks } from '@gitroom/frontend/components/webhooks/webhooks';
-import { Sets } from '@gitroom/frontend/components/sets/sets';
-import { SignaturesComponent } from '@gitroom/frontend/components/settings/signatures.component';
-import { Autopost } from '@gitroom/frontend/components/autopost/autopost';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { SVGLine } from '@gitroom/frontend/components/launches/launches.component';
-import { GlobalSettings } from '@gitroom/frontend/components/settings/global.settings';
-import { ProfileSettings } from '@gitroom/frontend/components/settings/profile.settings';
-import { AppsComponent } from '@gitroom/frontend/components/settings/apps.component';
-import { ThirdPartyComponent } from '@gitroom/frontend/components/third-parties/third-party.component';
-import { Plugs } from '@gitroom/frontend/components/plugs/plugs';
+import { Webhooks } from '@postnode/frontend/components/webhooks/webhooks';
+import { Sets } from '@postnode/frontend/components/sets/sets';
+import { SignaturesComponent } from '@postnode/frontend/components/settings/signatures.component';
+import { Autopost } from '@postnode/frontend/components/autopost/autopost';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { SVGLine } from '@postnode/frontend/components/launches/launches.component';
+import { GlobalSettings } from '@postnode/frontend/components/settings/global.settings';
+import { ProfileSettings } from '@postnode/frontend/components/settings/profile.settings';
+import { AppsComponent } from '@postnode/frontend/components/settings/apps.component';
+import { ThirdPartyComponent } from '@postnode/frontend/components/third-parties/third-party.component';
+import { Plugs } from '@postnode/frontend/components/plugs/plugs';
 export const SettingsPopup: FC<{
   getRef?: Ref<any>;
 }> = (props) => {

@@ -2,9 +2,9 @@
 
 import { FC, useState } from 'react';
 import clsx from 'clsx';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { DeveloperComponent } from '@gitroom/frontend/components/developer/developer.component';
-import { ApprovedAppsComponent } from '@gitroom/frontend/components/approved-apps/approved-apps.component';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { DeveloperComponent } from '@postnode/frontend/components/developer/developer.component';
+import { ApprovedAppsComponent } from '@postnode/frontend/components/approved-apps/approved-apps.component';
 
 export const AppsComponent: FC<{ canManageApps: boolean }> = ({
   canManageApps,

@@ -1,11 +1,11 @@
-import { internalFetch } from '@gitroom/helpers/utils/internal.fetch';
+import { internalFetch } from '@postnode/helpers/utils/internal.fetch';
 export const dynamic = 'force-dynamic';
-import { Register } from '@gitroom/frontend/components/auth/register';
+import { Register } from '@postnode/frontend/components/auth/register';
 import { Metadata } from 'next';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 import Link from 'next/link';
-import { getT } from '@gitroom/react/translation/get.translation.service.backend';
-import { LoginWithOidc } from '@gitroom/frontend/components/auth/login.with.oidc';
+import { getT } from '@postnode/react/translation/get.translation.service.backend';
+import { LoginWithOidc } from '@postnode/frontend/components/auth/login.with.oidc';
 export const metadata: Metadata = {
   title: `${getAppName()} Register`,
   description: '',

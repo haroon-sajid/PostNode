@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { Button } from '@gitroom/react/form/button';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { usePaymentAction } from '@gitroom/frontend/components/billing/use.payment.action';
+import { TopTitle } from '@postnode/frontend/components/launches/helpers/top.title.component';
+import { LoadingComponent } from '@postnode/frontend/components/layout/loading';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { timer } from '@postnode/helpers/utils/timer';
+import { Button } from '@postnode/react/form/button';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { usePaymentAction } from '@postnode/frontend/components/billing/use.payment.action';
 
 export const FinishTrial: FC<{ close: () => void }> = (props) => {
   const [finished, setFinished] = useState(false);

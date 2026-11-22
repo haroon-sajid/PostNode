@@ -6,26 +6,26 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { GetOrgFromRequest } from '@gitroom/nestjs-libraries/user/org.from.request';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { GetOrgFromRequest } from '@postnode/nestjs-libraries/user/org.from.request';
 import { Organization, User } from '@prisma/client';
-import { BillingSubscribeDto } from '@gitroom/nestjs-libraries/dtos/billing/billing.subscribe.dto';
-import { AdminApplyCouponDto } from '@gitroom/nestjs-libraries/dtos/billing/admin.apply.coupon.dto';
+import { BillingSubscribeDto } from '@postnode/nestjs-libraries/dtos/billing/billing.subscribe.dto';
+import { AdminApplyCouponDto } from '@postnode/nestjs-libraries/dtos/billing/admin.apply.coupon.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { GetUserFromRequest } from '@gitroom/nestjs-libraries/user/user.from.request';
-import { NotificationService } from '@gitroom/nestjs-libraries/database/prisma/notifications/notification.service';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { UsersService } from '@gitroom/nestjs-libraries/database/prisma/users/users.service';
-import { PaymentService } from '@gitroom/nestjs-libraries/services/payment/payment.service';
-import { BillingSyncDto } from '@gitroom/nestjs-libraries/dtos/billing/billing.sync.dto';
-import { BillingCancelDto } from '@gitroom/nestjs-libraries/dtos/billing/billing.cancel.dto';
-import { CheckPolicies } from '@gitroom/backend/services/auth/permissions/permissions.ability';
+import { GetUserFromRequest } from '@postnode/nestjs-libraries/user/user.from.request';
+import { NotificationService } from '@postnode/nestjs-libraries/database/prisma/notifications/notification.service';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
+import { UsersService } from '@postnode/nestjs-libraries/database/prisma/users/users.service';
+import { PaymentService } from '@postnode/nestjs-libraries/services/payment/payment.service';
+import { BillingSyncDto } from '@postnode/nestjs-libraries/dtos/billing/billing.sync.dto';
+import { BillingCancelDto } from '@postnode/nestjs-libraries/dtos/billing/billing.cancel.dto';
+import { CheckPolicies } from '@postnode/backend/services/auth/permissions/permissions.ability';
 import {
   AuthorizationActions,
   Sections,
-} from '@gitroom/backend/services/auth/permissions/permission.exception.class';
+} from '@postnode/backend/services/auth/permissions/permission.exception.class';
 import dayjs from 'dayjs';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 @ApiTags('Billing')
 @Controller('/billing')

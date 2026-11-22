@@ -1,5 +1,5 @@
 import { continueAsNew, proxyActivities } from '@temporalio/workflow';
-import { IntegrationsActivity } from '@gitroom/orchestrator/activities/integrations.activity';
+import { IntegrationsActivity } from '@postnode/orchestrator/activities/integrations.activity';
 
 const { encryptStoredTokens } = proxyActivities<IntegrationsActivity>({
   startToCloseTimeout: '10 minute',

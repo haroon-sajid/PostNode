@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { fromUtc } from '@gitroom/frontend/components/layout/set.timezone';
+import { fromUtc } from '@postnode/frontend/components/layout/set.timezone';
 
 export const RenderPreviewDate: FC<{ date: string }> = ({ date }) => {
   console.log(date);

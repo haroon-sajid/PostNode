@@ -2,31 +2,31 @@
 
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useVariables } from '@postnode/react/helpers/variable.context';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
-import { OrganizationSelector } from '@gitroom/frontend/components/layout/organization.selector';
-import { LanguageComponent } from '@gitroom/frontend/components/layout/language.component';
-import NotificationComponent from '@gitroom/frontend/components/notifications/notification.component';
+import { OrganizationSelector } from '@postnode/frontend/components/layout/organization.selector';
+import { LanguageComponent } from '@postnode/frontend/components/layout/language.component';
+import NotificationComponent from '@postnode/frontend/components/notifications/notification.component';
 import dynamic from 'next/dynamic';
-import { LogoTextComponent } from '@gitroom/frontend/components/ui/logo-text.component';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { LogoTextComponent } from '@postnode/frontend/components/ui/logo-text.component';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
 import { capitalize } from 'lodash';
 import clsx from 'clsx';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
-import { CheckIconComponent } from '@gitroom/frontend/components/ui/check.icon.component';
+import { LoadingComponent } from '@postnode/frontend/components/layout/loading';
+import { CheckIconComponent } from '@postnode/frontend/components/ui/check.icon.component';
 import {
   FAQComponent,
   FAQSection,
-} from '@gitroom/frontend/components/billing/faq.component';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { LogoutComponent } from '@gitroom/frontend/components/layout/logout.component';
-import { DeveloperIconComponent } from '@gitroom/frontend/components/developer/developer.icon.component';
-import { InvoicesComponent } from '@gitroom/frontend/components/layout/invoices.component';
+} from '@postnode/frontend/components/billing/faq.component';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { LogoutComponent } from '@postnode/frontend/components/layout/logout.component';
+import { DeveloperIconComponent } from '@postnode/frontend/components/developer/developer.icon.component';
+import { InvoicesComponent } from '@postnode/frontend/components/layout/invoices.component';
 
 const ModeComponent = dynamic(
-  () => import('@gitroom/frontend/components/layout/mode.component'),
+  () => import('@postnode/frontend/components/layout/mode.component'),
   {
     ssr: false,
   }
@@ -34,7 +34,7 @@ const ModeComponent = dynamic(
 
 const EmbeddedBilling = dynamic(
   () =>
-    import('@gitroom/frontend/components/billing/embedded.billing').then(
+    import('@postnode/frontend/components/billing/embedded.billing').then(
       (mod) => mod.EmbeddedBilling
     ),
   {
@@ -104,7 +104,7 @@ export const FirstBillingComponent = () => {
           </span>{' '}
           {t('billing_who_use', 'who use')}{' '}
           {t(
-            'billing_postiz_grow_social',
+            'billing_grow_social',
             '{{appName}} To Grow Their Social Presence'
           )}
         </div>

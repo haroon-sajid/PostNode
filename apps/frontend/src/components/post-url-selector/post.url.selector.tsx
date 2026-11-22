@@ -2,15 +2,15 @@
 
 import { EventEmitter } from 'events';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
+import { TopTitle } from '@postnode/frontend/components/launches/helpers/top.title.component';
 import dayjs from 'dayjs';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import removeMd from 'remove-markdown';
 import clsx from 'clsx';
-import { PlatformIcon } from '@gitroom/frontend/components/ui/platform.icon.component';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { newDayjs } from '@gitroom/frontend/components/layout/set.timezone';
+import { PlatformIcon } from '@postnode/frontend/components/ui/platform.icon.component';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { newDayjs } from '@postnode/frontend/components/layout/set.timezone';
 const postUrlEmitter = new EventEmitter();
 export const ShowPostSelector = () => {
   const [showPostSelector, setShowPostSelector] = useState(false);

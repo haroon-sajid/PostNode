@@ -4,11 +4,11 @@ import {
   NotFoundException,
   ValidationPipe,
 } from '@nestjs/common';
-import { PostsRepository } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.repository';
-import { CreatePostDto } from '@gitroom/nestjs-libraries/dtos/posts/create.post.dto';
-import { MediaDto } from '@gitroom/nestjs-libraries/dtos/media/media.dto';
+import { PostsRepository } from '@postnode/nestjs-libraries/database/prisma/posts/posts.repository';
+import { CreatePostDto } from '@postnode/nestjs-libraries/dtos/posts/create.post.dto';
+import { MediaDto } from '@postnode/nestjs-libraries/dtos/media/media.dto';
 import dayjs from 'dayjs';
-import { IntegrationManager } from '@gitroom/nestjs-libraries/integrations/integration.manager';
+import { IntegrationManager } from '@postnode/nestjs-libraries/integrations/integration.manager';
 import {
   Integration,
   Post,
@@ -17,47 +17,47 @@ import {
   CreationMethod,
   State,
 } from '@prisma/client';
-import { GetPostsDto } from '@gitroom/nestjs-libraries/dtos/posts/get.posts.dto';
-import { GetPostsListDto } from '@gitroom/nestjs-libraries/dtos/posts/get.posts.list.dto';
+import { GetPostsDto } from '@postnode/nestjs-libraries/dtos/posts/get.posts.dto';
+import { GetPostsListDto } from '@postnode/nestjs-libraries/dtos/posts/get.posts.list.dto';
 import { groupBy, shuffle, uniqBy } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import { CreateGeneratedPostsDto } from '@gitroom/nestjs-libraries/dtos/generator/create.generated.posts.dto';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
+import { CreateGeneratedPostsDto } from '@postnode/nestjs-libraries/dtos/generator/create.generated.posts.dto';
+import { IntegrationService } from '@postnode/nestjs-libraries/database/prisma/integrations/integration.service';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
 import utc from 'dayjs/plugin/utc';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { ShortLinkService } from '@gitroom/nestjs-libraries/short-linking/short.link.service';
-import { CreateTagDto } from '@gitroom/nestjs-libraries/dtos/posts/create.tag.dto';
+import { MediaService } from '@postnode/nestjs-libraries/database/prisma/media/media.service';
+import { ShortLinkService } from '@postnode/nestjs-libraries/short-linking/short.link.service';
+import { CreateTagDto } from '@postnode/nestjs-libraries/dtos/posts/create.tag.dto';
 import {
   minifyPostsList,
   minifyPosts,
-} from '@gitroom/helpers/utils/posts.list.minify';
-import { getSsrfSafeAxios } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+} from '@postnode/helpers/utils/posts.list.minify';
+import { getSsrfSafeAxios } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
 import sharp from 'sharp';
-import { UploadFactory } from '@gitroom/nestjs-libraries/upload/upload.factory';
+import { UploadFactory } from '@postnode/nestjs-libraries/upload/upload.factory';
 import { Readable } from 'stream';
 import { resolve, sep } from 'path';
-import { OpenaiService } from '@gitroom/nestjs-libraries/openai/openai.service';
+import { OpenaiService } from '@postnode/nestjs-libraries/openai/openai.service';
 dayjs.extend(utc);
 import { TemporalService } from 'nestjs-temporal-core';
 import { TypedSearchAttributes } from '@temporalio/common';
 import {
   organizationId,
   postId as postIdSearchParam,
-} from '@gitroom/nestjs-libraries/temporal/temporal.search.attribute';
-import { AnalyticsData } from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { ioRedis } from '@gitroom/nestjs-libraries/redis/redis.service';
-import { RefreshToken } from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { RefreshIntegrationService } from '@gitroom/nestjs-libraries/integrations/refresh.integration.service';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
-import { stripLinks } from '@gitroom/helpers/utils/strip.links';
+} from '@postnode/nestjs-libraries/temporal/temporal.search.attribute';
+import { AnalyticsData } from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { timer } from '@postnode/helpers/utils/timer';
+import { ioRedis } from '@postnode/nestjs-libraries/redis/redis.service';
+import { RefreshToken } from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { RefreshIntegrationService } from '@postnode/nestjs-libraries/integrations/refresh.integration.service';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
+import { stripLinks } from '@postnode/helpers/utils/strip.links';
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { postContentPlainText } from '@gitroom/helpers/utils/sanitize.post.content';
-import { CreatePublicCommentDto } from '@gitroom/nestjs-libraries/dtos/comments/add.comment.dto';
-import { countLength } from '@gitroom/helpers/utils/count.length';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { postContentPlainText } from '@postnode/helpers/utils/sanitize.post.content';
+import { CreatePublicCommentDto } from '@postnode/nestjs-libraries/dtos/comments/add.comment.dto';
+import { countLength } from '@postnode/helpers/utils/count.length';
 
 type PostWithConditionals = Post & {
   integration?: Integration;

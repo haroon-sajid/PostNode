@@ -1,23 +1,23 @@
 'use client';
 
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { Button } from '@gitroom/react/form/button';
-import { Input } from '@gitroom/react/form/input';
-import { Textarea } from '@gitroom/react/form/textarea';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { Button } from '@postnode/react/form/button';
+import { Input } from '@postnode/react/form/input';
+import { Textarea } from '@postnode/react/form/textarea';
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { useToaster } from '@postnode/react/toaster/toaster';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
-import { newDayjs } from '@gitroom/frontend/components/layout/set.timezone';
+import { newDayjs } from '@postnode/frontend/components/layout/set.timezone';
 import {
   PreviewComment,
   usePreviewComments,
-} from '@gitroom/frontend/components/preview/preview.comments.context';
+} from '@postnode/frontend/components/preview/preview.comments.context';
 
 const REVIEWER_NAME_KEY = 'preview-reviewer-name';
 

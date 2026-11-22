@@ -8,16 +8,16 @@ import {
   useState,
   useTransition,
 } from 'react';
-import { UtcToLocalDateRender } from '@gitroom/react/helpers/utc.date.render';
-import { Button } from '@gitroom/react/form/button';
-import { fromUtc } from '@gitroom/frontend/components/layout/set.timezone';
+import { UtcToLocalDateRender } from '@postnode/react/helpers/utc.date.render';
+import { Button } from '@postnode/react/form/button';
+import { fromUtc } from '@postnode/frontend/components/layout/set.timezone';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import clsx from 'clsx';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import ReactLoading from '@gitroom/frontend/components/layout/loading';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import ReactLoading from '@postnode/frontend/components/layout/loading';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 
 export const UpDown: FC<{
   name: string;

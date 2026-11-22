@@ -3,10 +3,10 @@
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { Input } from '@gitroom/react/form/input';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { TumblrDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/tumblr.dto';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { Input } from '@postnode/react/form/input';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { TumblrDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/tumblr.dto';
 
 const TumblrSettings = () => {
   const form = useSettings();

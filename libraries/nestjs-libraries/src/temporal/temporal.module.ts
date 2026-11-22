@@ -1,6 +1,6 @@
 import { TemporalModule } from 'nestjs-temporal-core';
-import { socialIntegrationList } from '@gitroom/nestjs-libraries/integrations/integration.manager';
-import { emailQueues } from '@gitroom/nestjs-libraries/temporal/email.queues';
+import { socialIntegrationList } from '@postnode/nestjs-libraries/integrations/integration.manager';
+import { emailQueues } from '@postnode/nestjs-libraries/temporal/email.queues';
 
 export const getTemporalModule = (
   isWorkers: boolean,

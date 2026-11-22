@@ -5,23 +5,23 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { timer } from '@gitroom/helpers/utils/timer';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { timer } from '@postnode/helpers/utils/timer';
 import dayjs from 'dayjs';
 import {
   BadBody,
   Disconnect,
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { InstagramDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/instagram.dto';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { InstagramDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/instagram.dto';
 import { Integration } from '@prisma/client';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { META_GRAPH_API_VERSION } from '@gitroom/nestjs-libraries/integrations/social/facebook.provider';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
-import { DashboardFunction } from '@gitroom/nestjs-libraries/integrations/dashboard.function.decorator';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { META_GRAPH_API_VERSION } from '@postnode/nestjs-libraries/integrations/social/facebook.provider';
+import { Tool } from '@postnode/nestjs-libraries/integrations/tool.decorator';
+import { DashboardFunction } from '@postnode/nestjs-libraries/integrations/dashboard.function.decorator';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 
 @Rules(
   [

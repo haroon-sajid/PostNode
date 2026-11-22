@@ -1,15 +1,15 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { OAuthRepository } from '@gitroom/nestjs-libraries/database/prisma/oauth/oauth.repository';
-import { CreateOAuthAppDto } from '@gitroom/nestjs-libraries/dtos/oauth/create-oauth-app.dto';
-import { UpdateOAuthAppDto } from '@gitroom/nestjs-libraries/dtos/oauth/update-oauth-app.dto';
-import { RegisterClientDto } from '@gitroom/nestjs-libraries/dtos/oauth/register-client.dto';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { extractBearerToken } from '@gitroom/nestjs-libraries/chat/oauth-types';
+import { OAuthRepository } from '@postnode/nestjs-libraries/database/prisma/oauth/oauth.repository';
+import { CreateOAuthAppDto } from '@postnode/nestjs-libraries/dtos/oauth/create-oauth-app.dto';
+import { UpdateOAuthAppDto } from '@postnode/nestjs-libraries/dtos/oauth/update-oauth-app.dto';
+import { RegisterClientDto } from '@postnode/nestjs-libraries/dtos/oauth/register-client.dto';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
+import { extractBearerToken } from '@postnode/nestjs-libraries/chat/oauth-types';
 import { createHash } from 'crypto';
 import { OAuthApp } from '@prisma/client';
-import type { SelfHostedInstance } from '@gitroom/nestjs-libraries/chat/mcp.relay.service';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import type { SelfHostedInstance } from '@postnode/nestjs-libraries/chat/mcp.relay.service';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 const openAiOAuthClientId = () =>
   process.env.OPENAI_OAUTH_CLIENT_ID?.trim();

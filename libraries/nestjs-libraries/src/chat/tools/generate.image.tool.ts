@@ -1,11 +1,11 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { UploadFactory } from '@gitroom/nestjs-libraries/upload/upload.factory';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { MediaService } from '@postnode/nestjs-libraries/database/prisma/media/media.service';
+import { UploadFactory } from '@postnode/nestjs-libraries/upload/upload.factory';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
 
 @Injectable()
 export class GenerateImageTool implements AgentToolInterface {

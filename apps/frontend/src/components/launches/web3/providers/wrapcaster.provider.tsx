@@ -1,10 +1,10 @@
 'use client';
 
 import React, { FC, useState, useCallback } from 'react';
-import { Web3ProviderInterface } from '@gitroom/frontend/components/launches/web3/web3.provider.interface';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { FarcasterApproval } from '@gitroom/frontend/components/auth/providers/farcaster.provider';
+import { Web3ProviderInterface } from '@postnode/frontend/components/launches/web3/web3.provider.interface';
+import { LoadingComponent } from '@postnode/frontend/components/layout/loading';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { FarcasterApproval } from '@postnode/frontend/components/auth/providers/farcaster.provider';
 export const WrapcasterProvider: FC<Web3ProviderInterface> = (props) => {
   const [_, state] = props.nonce.split('||');
   const modal = useModals();

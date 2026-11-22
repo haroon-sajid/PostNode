@@ -1,11 +1,11 @@
 'use client';
 
 import { FC, useCallback } from 'react';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { BillingHistory } from '@gitroom/frontend/components/billing/billing.history.component';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { BillingHistory } from '@postnode/frontend/components/billing/billing.history.component';
 
 export const InvoicesComponent: FC = () => {
   const { billingEnabled, isGeneral } = useVariables();

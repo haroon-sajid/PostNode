@@ -1,9 +1,9 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { Injectable } from '@nestjs/common';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
+import { MediaService } from '@postnode/nestjs-libraries/database/prisma/media/media.service';
 import z from 'zod';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
 
 @Injectable()
 export class MediaListTool implements AgentToolInterface {

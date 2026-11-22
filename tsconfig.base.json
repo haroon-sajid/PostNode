@@ -26,12 +26,12 @@
     "strict": true,
     "paths": {
       "@langchain/langgraph/prebuilt": ["node_modules/@langchain/langgraph/dist/prebuilt/index.d.ts"],
-      "@gitroom/backend/*": ["apps/backend/src/*"],
-      "@gitroom/frontend/*": ["apps/frontend/src/*"],
-      "@gitroom/helpers/*": ["libraries/helpers/src/*"],
-      "@gitroom/nestjs-libraries/*": ["libraries/nestjs-libraries/src/*"],
-      "@gitroom/react/*": ["libraries/react-shared-libraries/src/*"],
-      "@gitroom/orchestrator/*": ["apps/orchestrator/src/*"]
+      "@postnode/backend/*": ["apps/backend/src/*"],
+      "@postnode/frontend/*": ["apps/frontend/src/*"],
+      "@postnode/helpers/*": ["libraries/helpers/src/*"],
+      "@postnode/nestjs-libraries/*": ["libraries/nestjs-libraries/src/*"],
+      "@postnode/react/*": ["libraries/react-shared-libraries/src/*"],
+      "@postnode/orchestrator/*": ["apps/orchestrator/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

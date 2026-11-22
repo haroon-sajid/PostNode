@@ -1,11 +1,11 @@
 'use client';
 
 import { FC, ReactNode } from 'react';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { MenuItem } from '@gitroom/frontend/components/new-layout/menu-item';
-import { ProfileMenuComponent } from '@gitroom/frontend/components/layout/profile.menu.component';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { MenuItem } from '@postnode/frontend/components/new-layout/menu-item';
+import { ProfileMenuComponent } from '@postnode/frontend/components/layout/profile.menu.component';
 
 interface MenuItemInterface {
   name: string;
@@ -22,6 +22,27 @@ export const useMenuItem = () => {
   const t = useT();
 
   const firstMenu = [
+    {
+      name: t('dashboard', 'Dashboard'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+        >
+          <path
+            d="M7.5 1.75H3.25C2.42157 1.75 1.75 2.42157 1.75 3.25V9.25C1.75 10.0784 2.42157 10.75 3.25 10.75H7.5C8.32843 10.75 9 10.0784 9 9.25V3.25C9 2.42157 8.32843 1.75 7.5 1.75Z M17.75 1.75H13.5C12.6716 1.75 12 2.42157 12 3.25V5.25C12 6.07843 12.6716 6.75 13.5 6.75H17.75C18.5784 6.75 19.25 6.07843 19.25 5.25V3.25C19.25 2.42157 18.5784 1.75 17.75 1.75Z M17.75 9.75H13.5C12.6716 9.75 12 10.4216 12 11.25V17.75C12 18.5784 12.6716 19.25 13.5 19.25H17.75C18.5784 19.25 19.25 18.5784 19.25 17.75V11.25C19.25 10.4216 18.5784 9.75 17.75 9.75Z M7.5 13.75H3.25C2.42157 13.75 1.75 14.4216 1.75 15.25V17.75C1.75 18.5784 2.42157 19.25 3.25 19.25H7.5C8.32843 19.25 9 18.5784 9 17.75V15.25C9 14.4216 8.32843 13.75 7.5 13.75Z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+      path: '/dashboard',
+    },
     {
       name: isGeneral ? t('calendar', 'Calendar') : t('launches', 'Launches'),
       icon: (

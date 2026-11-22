@@ -10,19 +10,19 @@ import {
   StreamableFile,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
+import { PostsService } from '@postnode/nestjs-libraries/database/prisma/posts/posts.service';
 import { RealIP } from 'nestjs-real-ip';
 import { Request, Response } from 'express';
-import { AgentGraphInsertService } from '@gitroom/nestjs-libraries/agent/agent.graph.insert.service';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { AgentGraphInsertService } from '@postnode/nestjs-libraries/agent/agent.graph.insert.service';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
 import { Readable, pipeline } from 'stream';
 import { promisify } from 'util';
-import { OnlyURL } from '@gitroom/nestjs-libraries/dtos/webhooks/webhooks.dto';
-import { isSafePublicHttpsUrl } from '@gitroom/nestjs-libraries/dtos/webhooks/webhook.url.validator';
-import { ssrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
-import { CreatePublicCommentDto } from '@gitroom/nestjs-libraries/dtos/comments/add.comment.dto';
+import { OnlyURL } from '@postnode/nestjs-libraries/dtos/webhooks/webhooks.dto';
+import { isSafePublicHttpsUrl } from '@postnode/nestjs-libraries/dtos/webhooks/webhook.url.validator';
+import { ssrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+import { CreatePublicCommentDto } from '@postnode/nestjs-libraries/dtos/comments/add.comment.dto';
 
 const pump = promisify(pipeline);
 

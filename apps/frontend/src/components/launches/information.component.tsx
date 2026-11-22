@@ -1,14 +1,14 @@
 'use client';
 
 import React, { FC, Fragment, useCallback, useMemo } from 'react';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
 import { useShallow } from 'zustand/react/shallow';
 import clsx from 'clsx';
-import { PlatformIcon } from '@gitroom/frontend/components/ui/platform.icon.component';
+import { PlatformIcon } from '@postnode/frontend/components/ui/platform.icon.component';
 import { capitalize } from 'lodash';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { hasLinks } from '@gitroom/helpers/utils/strip.links';
-import { countLength } from '@gitroom/helpers/utils/count.length';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { hasLinks } from '@postnode/helpers/utils/strip.links';
+import { countLength } from '@postnode/helpers/utils/count.length';
 
 const Valid: FC = () => {
   return (

@@ -5,22 +5,22 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { timer } from '@postnode/helpers/utils/timer';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 import dayjs from 'dayjs';
 import {
   BadBody,
   SocialAbstract,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import { capitalize, chunk } from 'lodash';
-import { Plug } from '@gitroom/helpers/decorators/plug.decorator';
+import { Plug } from '@postnode/helpers/decorators/plug.decorator';
 import { Integration } from '@prisma/client';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
-import { ThreadsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/threads.dto';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
+import { ThreadsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/threads.dto';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
 
 @Rules(
   'If the content of the post (text, pictures or video) was made with AI, ask the user if they want to mark it as AI, and set made_with_ai to true only when they say yes.'

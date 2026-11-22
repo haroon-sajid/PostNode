@@ -2,7 +2,7 @@ import { IsDefined, IsIn, IsOptional, IsUrl } from 'class-validator';
 import {
   allProviders,
   EmptySettings,
-} from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
+} from '@postnode/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
 
 export class ConnectLinkDto {
   @IsDefined()

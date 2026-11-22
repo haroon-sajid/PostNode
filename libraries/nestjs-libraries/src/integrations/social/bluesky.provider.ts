@@ -4,15 +4,15 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { setHeartbeatDetails } from '@gitroom/nestjs-libraries/temporal/temporal.heartbeat';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { setHeartbeatDetails } from '@postnode/nestjs-libraries/temporal/temporal.heartbeat';
 import {
   BadBody,
   RefreshToken,
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import {
   BskyAgent,
   RichText,
@@ -23,18 +23,18 @@ import {
 } from '@atproto/api';
 import dayjs from 'dayjs';
 import { Integration } from '@prisma/client';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { isSafePublicHttpsUrl } from '@gitroom/nestjs-libraries/dtos/webhooks/webhook.url.validator';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
+import { isSafePublicHttpsUrl } from '@postnode/nestjs-libraries/dtos/webhooks/webhook.url.validator';
 import {
   getSsrfSafeAxios,
   getSsrfSafeDispatcher,
-} from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+} from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
 import sharp from 'sharp';
-import { Plug } from '@gitroom/helpers/decorators/plug.decorator';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+import { Plug } from '@postnode/helpers/decorators/plug.decorator';
+import { timer } from '@postnode/helpers/utils/timer';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 
 async function reduceImageBySize(url: string, maxSizeKB = 976) {
   try {

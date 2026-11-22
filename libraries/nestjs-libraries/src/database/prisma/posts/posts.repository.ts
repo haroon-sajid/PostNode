@@ -1,6 +1,6 @@
-import { PrismaRepository } from '@gitroom/nestjs-libraries/database/prisma/prisma.service';
+import { PrismaRepository } from '@postnode/nestjs-libraries/database/prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
-import { Post as PostBody } from '@gitroom/nestjs-libraries/dtos/posts/create.post.dto';
+import { Post as PostBody } from '@postnode/nestjs-libraries/dtos/posts/create.post.dto';
 import {
   APPROVED_SUBMIT_FOR_ORDER,
   CreationMethod,
@@ -8,8 +8,8 @@ import {
   Post,
   State,
 } from '@prisma/client';
-import { GetPostsDto } from '@gitroom/nestjs-libraries/dtos/posts/get.posts.dto';
-import { GetPostsListDto } from '@gitroom/nestjs-libraries/dtos/posts/get.posts.list.dto';
+import { GetPostsDto } from '@postnode/nestjs-libraries/dtos/posts/get.posts.dto';
+import { GetPostsListDto } from '@postnode/nestjs-libraries/dtos/posts/get.posts.list.dto';
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
@@ -17,11 +17,11 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import utc from 'dayjs/plugin/utc';
 import { v4 as uuidv4 } from 'uuid';
 import { capitalize } from 'lodash';
-import { CreateTagDto } from '@gitroom/nestjs-libraries/dtos/posts/create.tag.dto';
+import { CreateTagDto } from '@postnode/nestjs-libraries/dtos/posts/create.tag.dto';
 import {
   EncryptionService,
   integrationEncryptedFields,
-} from '@gitroom/nestjs-libraries/services/encryption.service';
+} from '@postnode/nestjs-libraries/services/encryption.service';
 
 dayjs.extend(isoWeek);
 dayjs.extend(weekOfYear);

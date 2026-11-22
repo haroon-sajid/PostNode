@@ -1,16 +1,16 @@
 'use client';
 
 import { FC, useCallback, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import useSWR from 'swr';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useDecisionModal, useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useDecisionModal, useModals } from '@postnode/frontend/components/layout/new-modal';
 import {
   MediaBox,
   mediaLibrarySize,
-} from '@gitroom/frontend/components/media/media.component';
+} from '@postnode/frontend/components/media/media.component';
 import copy from 'copy-to-clipboard';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 
 const useOAuthApp = () => {
   const fetch = useFetch();

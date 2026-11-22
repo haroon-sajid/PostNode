@@ -10,27 +10,27 @@ import React, {
   useState,
 } from 'react';
 import { useClickOutside } from '@mantine/hooks';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { TimeTable } from '@gitroom/frontend/components/launches/time.table';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { TimeTable } from '@postnode/frontend/components/launches/time.table';
 import {
   Integrations,
   useCalendar,
-} from '@gitroom/frontend/components/launches/calendar.context';
-import { BotPicture } from '@gitroom/frontend/components/launches/bot.picture';
-import { CustomerModal } from '@gitroom/frontend/components/launches/customer.modal';
+} from '@postnode/frontend/components/launches/calendar.context';
+import { BotPicture } from '@postnode/frontend/components/launches/bot.picture';
+import { CustomerModal } from '@postnode/frontend/components/launches/customer.modal';
 import { Integration } from '@prisma/client';
-import { SettingsModal } from '@gitroom/frontend/components/launches/settings.modal';
-import { CustomVariables } from '@gitroom/frontend/components/launches/add.provider.component';
+import { SettingsModal } from '@postnode/frontend/components/launches/settings.modal';
+import { CustomVariables } from '@postnode/frontend/components/launches/add.provider.component';
 import { useRouter } from 'next/navigation';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { AddEditModal } from '@gitroom/frontend/components/new-launch/add.edit.modal';
-import { fromUtc } from '@gitroom/frontend/components/layout/set.timezone';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { AddEditModal } from '@postnode/frontend/components/new-launch/add.edit.modal';
+import { fromUtc } from '@postnode/frontend/components/layout/set.timezone';
 import copy from 'copy-to-clipboard';
-import { Input } from '@gitroom/react/form/input';
-import { Button } from '@gitroom/react/form/button';
+import { Input } from '@postnode/react/form/input';
+import { Button } from '@postnode/react/form/button';
 
 const RenameChannelModal: FC<{
   name: string;

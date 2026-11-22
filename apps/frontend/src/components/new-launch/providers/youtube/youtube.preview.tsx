@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { useWatch } from 'react-hook-form';
 import { capitalize } from 'lodash';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { textSlicer } from '@gitroom/helpers/utils/count.length';
-import { VideoOrImage } from '@gitroom/react/helpers/video.or.image';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { textSlicer } from '@postnode/helpers/utils/count.length';
+import { VideoOrImage } from '@postnode/react/helpers/video.or.image';
 
 export const YoutubePreview: FC<{
   maximumCharacters?: number;

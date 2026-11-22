@@ -4,22 +4,22 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { RedditSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/reddit.dto';
-import { timer } from '@gitroom/helpers/utils/timer';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { RedditSettingsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/reddit.dto';
+import { timer } from '@postnode/helpers/utils/timer';
 import {
   BadBody,
   Disconnect,
   RefreshToken,
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import { lookup } from 'mime-types';
 import FormDataUpload from 'form-data';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
+import { Tool } from '@postnode/nestjs-libraries/integrations/tool.decorator';
 import { Integration } from '@prisma/client';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 
 // Travels through the workflow history between postPending, checkPostStatus
 // and finalizePost. The cursor makes every subreddit submit its own

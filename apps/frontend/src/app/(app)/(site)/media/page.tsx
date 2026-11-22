@@ -1,6 +1,6 @@
-import { MediaLayoutComponent } from '@gitroom/frontend/components/new-layout/layout.media.component';
+import { MediaLayoutComponent } from '@postnode/frontend/components/new-layout/layout.media.component';
 import { Metadata } from 'next';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export const metadata: Metadata = {
   title: `${getAppName()} Media`,

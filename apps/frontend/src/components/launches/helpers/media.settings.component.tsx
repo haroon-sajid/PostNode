@@ -2,13 +2,13 @@
 
 import { EventEmitter } from 'events';
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { MediaBox } from '@gitroom/frontend/components/media/media.component';
+import { TopTitle } from '@postnode/frontend/components/launches/helpers/top.title.component';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { MediaBox } from '@postnode/frontend/components/media/media.component';
 const postUrlEmitter = new EventEmitter();
 
 export const MediaSettingsLayout = () => {

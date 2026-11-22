@@ -4,14 +4,14 @@ import { FC, useCallback } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
 import { useFieldArray } from 'react-hook-form';
-import { Button } from '@gitroom/react/form/button';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
+import { Button } from '@postnode/react/form/button';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
 import { Subreddit } from './subreddit';
-import { LemmySettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/lemmy.dto';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { LemmySettingsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/lemmy.dto';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 const LemmySettings: FC = () => {
   const { register, control } = useSettings();
   const { fields, append, remove } = useFieldArray({

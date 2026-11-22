@@ -1,30 +1,30 @@
 'use client';
 
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { Button } from '@gitroom/react/form/button';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { Button } from '@postnode/react/form/button';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import { Subscription } from '@prisma/client';
 import { useDebouncedCallback } from 'use-debounce';
-import ReactLoading from '@gitroom/frontend/components/layout/loading';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import ReactLoading from '@postnode/frontend/components/layout/loading';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useToaster } from '@postnode/react/toaster/toaster';
 import clsx from 'clsx';
 import { capitalize } from 'lodash';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
-import { FAQComponent } from '@gitroom/frontend/components/billing/faq.component';
-import { useBillingFeatures } from '@gitroom/frontend/components/billing/first.billing.component';
-import { BillingHistory } from '@gitroom/frontend/components/billing/billing.history.component';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { FAQComponent } from '@postnode/frontend/components/billing/faq.component';
+import { useBillingFeatures } from '@postnode/frontend/components/billing/first.billing.component';
+import { BillingHistory } from '@postnode/frontend/components/billing/billing.history.component';
 import useSWR, { useSWRConfig } from 'swr';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { FinishTrial } from '@gitroom/frontend/components/billing/finish.trial';
-import { fromUtc } from '@gitroom/frontend/components/layout/set.timezone';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { LogoutComponent } from '@gitroom/frontend/components/layout/logout.component';
-import { usePaymentAction } from '@gitroom/frontend/components/billing/use.payment.action';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { FinishTrial } from '@postnode/frontend/components/billing/finish.trial';
+import { fromUtc } from '@postnode/frontend/components/layout/set.timezone';
+import { timer } from '@postnode/helpers/utils/timer';
+import { LogoutComponent } from '@postnode/frontend/components/layout/logout.component';
+import { usePaymentAction } from '@postnode/frontend/components/billing/use.payment.action';
 
 type SubscriptionWithPlatform = Subscription & {
   platform?: 'web' | 'mobile';

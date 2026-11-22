@@ -2,18 +2,18 @@ export const dynamic = 'force-dynamic';
 import '../global.scss';
 import 'react-tooltip/dist/react-tooltip.css';
 import '@copilotkit/react-ui/styles.css';
-import LayoutContext from '@gitroom/frontend/components/layout/layout.context';
+import LayoutContext from '@postnode/frontend/components/layout/layout.context';
 import { ReactNode } from 'react';
-import { jakartaSans } from '@gitroom/frontend/fonts/plus-jakarta-sans/plus.jakarta.sans.font';
+import { jakartaSans } from '@postnode/frontend/fonts/plus-jakarta-sans/plus.jakarta.sans.font';
 import clsx from 'clsx';
-import { VariableContextComponent } from '@gitroom/react/helpers/variable.context';
+import { VariableContextComponent } from '@postnode/react/helpers/variable.context';
 import { cookies } from 'next/headers';
 import {
   cookieName,
   fallbackLng,
-} from '@gitroom/react/translation/i18n.config';
-import { HtmlComponent } from '@gitroom/frontend/components/layout/html.component';
-import { ChangeDirClient } from '@gitroom/frontend/components/new-layout/change.dir.client';
+} from '@postnode/react/translation/i18n.config';
+import { HtmlComponent } from '@postnode/frontend/components/layout/html.component';
+import { ChangeDirClient } from '@postnode/frontend/components/new-layout/change.dir.client';
 
 export default async function AppLayout({ children }: { children: ReactNode }) {
   const cookieStore = await cookies();
@@ -41,9 +41,9 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
           discordUrl={process.env.NEXT_PUBLIC_DISCORD_SUPPORT!}
           frontEndUrl={process.env.FRONTEND_URL!}
           isGeneral={!!process.env.IS_GENERAL}
-          genericOauth={!!process.env.POSTIZ_GENERIC_OAUTH}
-          oauthLogoUrl={process.env.NEXT_PUBLIC_POSTIZ_OAUTH_LOGO_URL!}
-          oauthDisplayName={process.env.NEXT_PUBLIC_POSTIZ_OAUTH_DISPLAY_NAME!}
+          genericOauth={!!process.env.GENERIC_OAUTH}
+          oauthLogoUrl={process.env.NEXT_PUBLIC_GENERIC_OAUTH_LOGO_URL!}
+          oauthDisplayName={process.env.NEXT_PUBLIC_GENERIC_OAUTH_DISPLAY_NAME!}
           uploadDirectory={process.env.NEXT_PUBLIC_UPLOAD_STATIC_DIRECTORY!}
           cloudflareUrl={process.env.CLOUDFLARE_BUCKET_URL || ''}
           mainUrl={process.env.MAIN_URL || ''}

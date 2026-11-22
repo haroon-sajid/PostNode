@@ -1,22 +1,23 @@
 'use client';
 
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
 import React, { FC, useCallback, useMemo } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Input } from '@gitroom/react/form/input';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { Input } from '@postnode/react/form/input';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postnode/react/form/button';
 import { classValidatorResolver } from '@hookform/resolvers/class-validator';
-import { ApiKeyDto } from '@gitroom/nestjs-libraries/dtos/integrations/api.key.dto';
+import { ApiKeyDto } from '@postnode/nestjs-libraries/dtos/integrations/api.key.dto';
 import { useRouter } from 'next/navigation';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { TopTitle } from '@postnode/frontend/components/launches/helpers/top.title.component';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { getAppScheme } from '@postnode/helpers/utils/app.name';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { web3List } from '@gitroom/frontend/components/launches/web3/web3.list';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { web3List } from '@postnode/frontend/components/launches/web3/web3.list';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 import clsx from 'clsx';
-import { PlatformIcon } from '@gitroom/frontend/components/ui/platform.icon.component';
+import { PlatformIcon } from '@postnode/frontend/components/ui/platform.icon.component';
 import copy from 'copy-to-clipboard';
 import { capitalize } from 'lodash';
 const resolver = classValidatorResolver(ApiKeyDto);
@@ -360,14 +361,16 @@ export const AddProviderComponent: FC<{
         };
         const gotoIntegration = async (externalUrl?: string) => {
           // Mobile WebView: reuse the existing `externalUrl` param to
-          // carry the `postiz://` deep link so the backend redirects
+          // carry the app's deep link (getAppScheme) so the backend redirects
           // back to the iOS/Android app after OAuth completes, instead
           // of the default web redirect.
           const params = [
             `externalUrl=${encodeURIComponent(externalUrl)}`,
             onboardingParam,
             isMobile
-              ? `redirectUrl=${encodeURIComponent('postiz://integrations')}`
+              ? `redirectUrl=${encodeURIComponent(
+                  `${getAppScheme()}://integrations`
+                )}`
               : '',
           ]
             .filter(Boolean)
@@ -407,7 +410,7 @@ export const AddProviderComponent: FC<{
             // `window.open`/`location.href` aren't reliable here because
             // RN WebView doesn't always route them through the native
             // navigation intercept. The backend redirects back to the
-            // app via `postiz://` once OAuth completes.
+            // app via its deep link once OAuth completes.
             const rn = (window as any).ReactNativeWebView;
             if (rn && typeof rn.postMessage === 'function') {
               rn.postMessage(JSON.stringify({ type: 'open-external', url }));

@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { textSlicer } from '@gitroom/helpers/utils/count.length';
-import { VideoOrImage } from '@gitroom/react/helpers/video.or.image';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { textSlicer } from '@postnode/helpers/utils/count.length';
+import { VideoOrImage } from '@postnode/react/helpers/video.or.image';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
 
 export const PinterestPreview: FC<{
   maximumCharacters?: number;

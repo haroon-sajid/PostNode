@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getCookieUrlFromDomain } from '@gitroom/helpers/subdomain/subdomain.management';
-import { internalFetch } from '@gitroom/helpers/utils/internal.fetch';
+import { getCookieUrlFromDomain } from '@postnode/helpers/subdomain/subdomain.management';
+import { internalFetch } from '@postnode/helpers/utils/internal.fetch';
 import acceptLanguage from 'accept-language';
 import {
   cookieName,
   headerName,
   languages,
-} from '@gitroom/react/translation/i18n.config';
+} from '@postnode/react/translation/i18n.config';
 acceptLanguage.languages(languages);
 
 // This function can be marked `async` if using `await` inside
@@ -103,7 +103,7 @@ export async function proxy(request: NextRequest) {
       ? ''
       : (url.indexOf('?') > -1 ? '&' : '?') +
         `provider=${(findIndex === 'settings'
-          ? process.env.POSTIZ_GENERIC_OAUTH
+          ? process.env.GENERIC_OAUTH
             ? 'generic'
             : 'github'
           : findIndex
@@ -168,7 +168,7 @@ export async function proxy(request: NextRequest) {
     if (nextUrl.pathname === '/') {
       return NextResponse.redirect(
         new URL(
-          !!process.env.IS_GENERAL ? '/launches' : `/analytics`,
+          !!process.env.IS_GENERAL ? '/dashboard' : `/analytics`,
           nextUrl.href
         )
       );

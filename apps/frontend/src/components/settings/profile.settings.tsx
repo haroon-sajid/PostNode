@@ -2,12 +2,12 @@
 
 import React, { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Input } from '@gitroom/react/form/input';
-import { Textarea } from '@gitroom/react/form/textarea';
-import { Button } from '@gitroom/react/form/button';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { ProfileAvatar } from '@gitroom/frontend/components/layout/profile.menu.component';
+import { Input } from '@postnode/react/form/input';
+import { Textarea } from '@postnode/react/form/textarea';
+import { Button } from '@postnode/react/form/button';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { ProfileAvatar } from '@postnode/frontend/components/layout/profile.menu.component';
 
 // The form (fullname, bio, picture) and its submit live in SettingsPopup
 export const ProfileSettings: FC<{

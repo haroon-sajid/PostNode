@@ -3,18 +3,18 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { SocialAbstract } from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { SocialAbstract } from '@postnode/nestjs-libraries/integrations/social.abstract';
 import dayjs from 'dayjs';
 import { Integration } from '@prisma/client';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { WordpressDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/wordpress.dto';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { WordpressDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/wordpress.dto';
 import slugify from 'slugify';
 // import FormData from 'form-data';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { getSsrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { Tool } from '@postnode/nestjs-libraries/integrations/tool.decorator';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { getSsrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 import { string } from 'yup';
 
 const WORDPRESS_USER_AGENT = `${getAppName()}/1.0`;

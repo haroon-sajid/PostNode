@@ -5,23 +5,23 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
 import dayjs from 'dayjs';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import {
   BadBody,
   Disconnect,
   RefreshToken,
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { TikTokDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { TikTokDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
+import { timer } from '@postnode/helpers/utils/timer';
+import { getAppName } from '@postnode/helpers/utils/app.name';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 import { Integration } from '@prisma/client';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { Tool } from '@postnode/nestjs-libraries/integrations/tool.decorator';
 
 @Rules(
   [

@@ -1,20 +1,20 @@
 'use client';
 import 'reflect-metadata';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
 import dayjs from 'dayjs';
 import { FC, useEffect } from 'react';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { ManageModal } from '@gitroom/frontend/components/new-launch/manage.modal';
-import { Integrations } from '@gitroom/frontend/components/launches/calendar.context';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { ManageModal } from '@postnode/frontend/components/new-launch/manage.modal';
+import { Integrations } from '@postnode/frontend/components/launches/calendar.context';
 import { useShallow } from 'zustand/react/shallow';
-import { useExistingData } from '@gitroom/frontend/components/launches/helpers/use.existing.data';
+import { useExistingData } from '@postnode/frontend/components/launches/helpers/use.existing.data';
 import {
   fromUtc,
   newDayjs,
-} from '@gitroom/frontend/components/layout/set.timezone';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+} from '@postnode/frontend/components/layout/set.timezone';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 import { Post } from '@prisma/client';
 
 export interface AddEditModalProps {

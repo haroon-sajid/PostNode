@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
-import { AdminStatsComponent } from '@gitroom/frontend/components/admin/admin-stats.component';
+import { AdminStatsComponent } from '@postnode/frontend/components/admin/admin-stats.component';
 import { Metadata } from 'next';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export const metadata: Metadata = {
   title: `${getAppName()} Admin Stats`,

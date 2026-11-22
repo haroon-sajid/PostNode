@@ -10,23 +10,24 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
-import { ThrottlerRealIpGuard } from '@gitroom/nestjs-libraries/throttler/throttler.provider';
+import { ThrottlerRealIpGuard } from '@postnode/nestjs-libraries/throttler/throttler.provider';
 import { Response, Request } from 'express';
 
-import { CreateOrgUserDto } from '@gitroom/nestjs-libraries/dtos/auth/create.org.user.dto';
-import { LoginUserDto } from '@gitroom/nestjs-libraries/dtos/auth/login.user.dto';
-import { AuthService } from '@gitroom/backend/services/auth/auth.service';
-import { ForgotReturnPasswordDto } from '@gitroom/nestjs-libraries/dtos/auth/forgot-return.password.dto';
-import { ForgotPasswordDto } from '@gitroom/nestjs-libraries/dtos/auth/forgot.password.dto';
-import { ResendActivationDto } from '@gitroom/nestjs-libraries/dtos/auth/resend-activation.dto';
+import { CreateOrgUserDto } from '@postnode/nestjs-libraries/dtos/auth/create.org.user.dto';
+import { LoginUserDto } from '@postnode/nestjs-libraries/dtos/auth/login.user.dto';
+import { AuthService } from '@postnode/backend/services/auth/auth.service';
+import { ForgotReturnPasswordDto } from '@postnode/nestjs-libraries/dtos/auth/forgot-return.password.dto';
+import { ForgotPasswordDto } from '@postnode/nestjs-libraries/dtos/auth/forgot.password.dto';
+import { ResendActivationDto } from '@postnode/nestjs-libraries/dtos/auth/resend-activation.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { getCookieUrlFromDomain } from '@gitroom/helpers/subdomain/subdomain.management';
-import { EmailService } from '@gitroom/nestjs-libraries/services/email.service';
+import { getCookieUrlFromDomain } from '@postnode/helpers/subdomain/subdomain.management';
+import { EmailService } from '@postnode/nestjs-libraries/services/email.service';
 import { RealIP } from 'nestjs-real-ip';
-import { UserAgent } from '@gitroom/nestjs-libraries/user/user.agent';
+import { UserAgent } from '@postnode/nestjs-libraries/user/user.agent';
 import { Provider } from '@prisma/client';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { FarcasterProvider } from '@gitroom/nestjs-libraries/integrations/social/farcaster.provider';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { getAppScheme } from '@postnode/helpers/utils/app.name';
+import { FarcasterProvider } from '@postnode/nestjs-libraries/integrations/social/farcaster.provider';
 
 @ApiTags('Auth')
 @Controller('/auth')
@@ -208,7 +209,8 @@ export class AuthController {
     @Query('state') state: string,
     @Res({ passthrough: false }) response: Response
   ) {
-    const scheme = process.env.MOBILE_APP_SCHEME || 'postiz://auth/callback';
+    const scheme =
+      process.env.MOBILE_APP_SCHEME || `${getAppScheme()}://auth/callback`;
     const params = new URLSearchParams();
     if (code) params.set('code', code);
     if (state) params.set('state', state);

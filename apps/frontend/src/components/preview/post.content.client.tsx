@@ -10,11 +10,11 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 import {
   PendingAnchor,
   usePreviewComments,
-} from '@gitroom/frontend/components/preview/preview.comments.context';
+} from '@postnode/frontend/components/preview/preview.comments.context';
 
 interface HighlightRange {
   id: string;

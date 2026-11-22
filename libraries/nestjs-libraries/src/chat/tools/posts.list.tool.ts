@@ -1,9 +1,9 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
+import { PostsService } from '@postnode/nestjs-libraries/database/prisma/posts/posts.service';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 

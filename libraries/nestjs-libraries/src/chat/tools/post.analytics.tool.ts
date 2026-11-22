@@ -1,10 +1,10 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { PostsService } from '@postnode/nestjs-libraries/database/prisma/posts/posts.service';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 @Injectable()
 export class PostAnalyticsTool implements AgentToolInterface {

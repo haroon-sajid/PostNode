@@ -3,20 +3,20 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
 import {
   BadBody,
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
-import { TumblrDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/tumblr.dto';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
+import { TumblrDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/tumblr.dto';
 import { Integration } from '@prisma/client';
 import FormDataUpload from 'form-data';
 import { lookup } from 'mime-types';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
-import { DashboardFunction } from '@gitroom/nestjs-libraries/integrations/dashboard.function.decorator';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
+import { getAppName } from '@postnode/helpers/utils/app.name';
+import { DashboardFunction } from '@postnode/nestjs-libraries/integrations/dashboard.function.decorator';
 
 const TUMBLR_API_URL = 'https://api.tumblr.com/v2';
 const TUMBLR_USER_AGENT = `${getAppName()}/1.0`;

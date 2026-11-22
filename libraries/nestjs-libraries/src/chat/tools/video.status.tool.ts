@@ -1,8 +1,8 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { Injectable } from '@nestjs/common';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
+import { MediaService } from '@postnode/nestjs-libraries/database/prisma/media/media.service';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
 import { z } from 'zod';
 
 @Injectable()

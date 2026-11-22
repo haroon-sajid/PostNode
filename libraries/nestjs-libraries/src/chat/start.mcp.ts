@@ -1,20 +1,20 @@
 import { INestApplication } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { MastraService } from '@gitroom/nestjs-libraries/chat/mastra.service';
-import { LoadToolsService } from '@gitroom/nestjs-libraries/chat/load.tools.service';
+import { MastraService } from '@postnode/nestjs-libraries/chat/mastra.service';
+import { LoadToolsService } from '@postnode/nestjs-libraries/chat/load.tools.service';
 import { MCPServer } from '@mastra/mcp';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
+import { OrganizationService } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.service';
 import {
   OAuthService,
   selfHostedRelayEnabled,
-} from '@gitroom/nestjs-libraries/database/prisma/oauth/oauth.service';
+} from '@postnode/nestjs-libraries/database/prisma/oauth/oauth.service';
 import { runWithContext } from './async.storage';
 import { createOAuthMiddleware } from './oauth-middleware';
-import { UPLOAD_WIDGET_URI, uploadWidgetHtml } from '@gitroom/nestjs-libraries/chat/ui/upload.widget';
-import { CLIPPING_WIDGET_URI, clippingWidgetHtml } from '@gitroom/nestjs-libraries/chat/ui/clipping.widget';
-import { UploadFactory } from '@gitroom/nestjs-libraries/upload/upload.factory';
-import { McpRelayService } from '@gitroom/nestjs-libraries/chat/mcp.relay.service';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { UPLOAD_WIDGET_URI, uploadWidgetHtml } from '@postnode/nestjs-libraries/chat/ui/upload.widget';
+import { CLIPPING_WIDGET_URI, clippingWidgetHtml } from '@postnode/nestjs-libraries/chat/ui/clipping.widget';
+import { UploadFactory } from '@postnode/nestjs-libraries/upload/upload.factory';
+import { McpRelayService } from '@postnode/nestjs-libraries/chat/mcp.relay.service';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 const fixAcceptHeader = (req: Request) => {
   const value = 'application/json, text/event-stream';
   req.headers.accept = value;
@@ -69,7 +69,7 @@ export const startMcp = async (app: INestApplication) => {
     oauthService.getSelfHostedByAccessToken(token);
 
   const mastra = await mastraService.mastra();
-  const agent = mastra.getAgent('postiz');
+  const agent = mastra.getAgent('assistant');
   const agentTools = await agent.listTools();
   const tools = {
     ...agentTools,
@@ -144,14 +144,14 @@ export const startMcp = async (app: INestApplication) => {
     name: `${getAppName()} MCP`,
     version: '1.0.0',
     tools,
-    agents: { postiz: agent },
+    agents: { assistant: agent },
     appResources,
   };
 
   const server = new MCPServer({ ...serverConfig, protocolVersion: '2026-07-28' });
 
   // The directory-facing servers don't register the agent - it would be
-  // exposed as an annotation-less catch-all ask_postiz tool, which the
+  // exposed as an annotation-less catch-all ask_assistant tool, which the
   // ChatGPT and Claude directory reviews reject
   const oauthServer = new MCPServer({
     name: `${getAppName()} MCP`,

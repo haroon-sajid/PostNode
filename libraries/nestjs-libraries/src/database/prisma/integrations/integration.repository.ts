@@ -1,17 +1,17 @@
-import { PrismaRepository } from '@gitroom/nestjs-libraries/database/prisma/prisma.service';
+import { PrismaRepository } from '@postnode/nestjs-libraries/database/prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
 import { createHash } from 'crypto';
 import dayjs from 'dayjs';
 import { Integration, Prisma } from '@prisma/client';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { IntegrationTimeDto } from '@gitroom/nestjs-libraries/dtos/integrations/integration.time.dto';
-import { UploadFactory } from '@gitroom/nestjs-libraries/upload/upload.factory';
-import { PlugDto } from '@gitroom/nestjs-libraries/dtos/plugs/plug.dto';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { IntegrationTimeDto } from '@postnode/nestjs-libraries/dtos/integrations/integration.time.dto';
+import { UploadFactory } from '@postnode/nestjs-libraries/upload/upload.factory';
+import { PlugDto } from '@postnode/nestjs-libraries/dtos/plugs/plug.dto';
 import {
   ENCRYPTED_PREFIX,
   EncryptionService,
   integrationEncryptedFields,
-} from '@gitroom/nestjs-libraries/services/encryption.service';
+} from '@postnode/nestjs-libraries/services/encryption.service';
 
 @Injectable()
 export class IntegrationRepository {

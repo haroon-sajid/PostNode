@@ -1,12 +1,12 @@
 'use client';
 
 import React, { FC, useCallback } from 'react';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { setCookie } from '@gitroom/frontend/components/layout/layout.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { setCookie } from '@postnode/frontend/components/layout/layout.context';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 // Asks for confirmation, then signs the user out (used by Settings and the profile menu)
 export const useLogout = () => {
   const fetch = useFetch();

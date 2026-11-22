@@ -1,11 +1,11 @@
 'use client';
 
 import { ReactNode, useCallback } from 'react';
-import { FetchWrapperComponent } from '@gitroom/helpers/utils/custom.fetch';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useDecisionModal } from '@gitroom/frontend/components/layout/new-modal';
-import { useReturnUrl } from '@gitroom/frontend/app/(app)/auth/return.url.component';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { FetchWrapperComponent } from '@postnode/helpers/utils/custom.fetch';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useDecisionModal } from '@postnode/frontend/components/layout/new-modal';
+import { useReturnUrl } from '@postnode/frontend/app/(app)/auth/return.url.component';
+import { useVariables } from '@postnode/react/helpers/variable.context';
 export default function LayoutContext(params: { children: ReactNode }) {
   if (params?.children) {
     // eslint-disable-next-line react/no-children-prop

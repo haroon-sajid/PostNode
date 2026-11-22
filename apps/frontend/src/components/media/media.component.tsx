@@ -11,30 +11,30 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postnode/react/form/button';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 import { Media } from '@prisma/client';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
 import EventEmitter from 'events';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { useToaster } from '@postnode/react/toaster/toaster';
 import clsx from 'clsx';
-import { VideoFrame } from '@gitroom/react/helpers/video.frame';
-import { useUppyUploader } from '@gitroom/frontend/components/media/new.uploader';
+import { VideoFrame } from '@postnode/react/helpers/video.frame';
+import { useUppyUploader } from '@postnode/frontend/components/media/new.uploader';
 import dynamic from 'next/dynamic';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { AiImage } from '@gitroom/frontend/components/launches/ai.image';
-import { DropFiles } from '@gitroom/frontend/components/layout/drop.files';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { ThirdPartyMedia } from '@gitroom/frontend/components/third-parties/third-party.media';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { AiImage } from '@postnode/frontend/components/launches/ai.image';
+import { DropFiles } from '@postnode/frontend/components/layout/drop.files';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { ThirdPartyMedia } from '@postnode/frontend/components/third-parties/third-party.media';
 import { ReactSortable } from 'react-sortablejs';
-import { MediaComponentInner } from '@gitroom/frontend/components/launches/helpers/media.settings.component';
-import { AiVideo } from '@gitroom/frontend/components/launches/ai.video';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { ThirdPartyMediaLibrary } from '@gitroom/frontend/components/third-parties/third-party.media-library';
+import { MediaComponentInner } from '@postnode/frontend/components/launches/helpers/media.settings.component';
+import { AiVideo } from '@postnode/frontend/components/launches/ai.video';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { ThirdPartyMediaLibrary } from '@postnode/frontend/components/third-parties/third-party.media-library';
 import { Dashboard } from '@uppy/react';
 import {
   ChevronLeftIcon,
@@ -49,13 +49,13 @@ import {
   VerticalDividerIcon,
   NoMediaIcon,
   TrashIcon,
-} from '@gitroom/frontend/components/ui/icons';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+} from '@postnode/frontend/components/ui/icons';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
 import { useShallow } from 'zustand/react/shallow';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
+import { LoadingComponent } from '@postnode/frontend/components/layout/loading';
 import { useDebounce } from 'use-debounce';
 const Polonto = dynamic(
-  () => import('@gitroom/frontend/components/launches/polonto')
+  () => import('@postnode/frontend/components/launches/polonto')
 );
 const showModalEmitter = new EventEmitter();
 // on phones the media library takes the whole screen

@@ -1,7 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { PaymentProviderManager } from '@gitroom/nestjs-libraries/services/payment/payment.provider.manager';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { PaymentPlatform } from '@gitroom/nestjs-libraries/services/payment/payment.provider.interface';
+import { PaymentProviderManager } from '@postnode/nestjs-libraries/services/payment/payment.provider.manager';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { PaymentPlatform } from '@postnode/nestjs-libraries/services/payment/payment.provider.interface';
 
 @Injectable()
 export class PaymentService {

@@ -4,17 +4,17 @@ import { FC } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { Input } from '@gitroom/react/form/input';
-import { HashnodePublications } from '@gitroom/frontend/components/new-launch/providers/hashnode/hashnode.publications';
-import { HashnodeTags } from '@gitroom/frontend/components/new-launch/providers/hashnode/hashnode.tags';
-import { HashnodeSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/hashnode.settings.dto';
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { Input } from '@postnode/react/form/input';
+import { HashnodePublications } from '@postnode/frontend/components/new-launch/providers/hashnode/hashnode.publications';
+import { HashnodeTags } from '@postnode/frontend/components/new-launch/providers/hashnode/hashnode.tags';
+import { HashnodeSettingsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/hashnode.settings.dto';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
 import clsx from 'clsx';
-import { MediaComponent } from '@gitroom/frontend/components/media/media.component';
-import { Canonical } from '@gitroom/react/form/canonical';
+import { MediaComponent } from '@postnode/frontend/components/media/media.component';
+import { Canonical } from '@postnode/react/form/canonical';
 
 const HashnodeSettings: FC = () => {
   const form = useSettings();

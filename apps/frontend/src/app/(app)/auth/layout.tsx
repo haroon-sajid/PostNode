@@ -1,9 +1,9 @@
 export const dynamic = 'force-dynamic';
 import { ReactNode } from 'react';
 import loadDynamic from 'next/dynamic';
-import { LogoTextComponent } from '@gitroom/frontend/components/ui/logo-text.component';
-import { MantineWrapper } from '@gitroom/react/helpers/mantine.wrapper';
-import { Toaster } from '@gitroom/react/toaster/toaster';
+import { LogoTextComponent } from '@postnode/frontend/components/ui/logo-text.component';
+import { MantineWrapper } from '@postnode/react/helpers/mantine.wrapper';
+import { Toaster } from '@postnode/react/toaster/toaster';
 const ReturnUrlComponent = loadDynamic(() => import('./return.url.component'));
 export default async function AuthLayout({
   children,

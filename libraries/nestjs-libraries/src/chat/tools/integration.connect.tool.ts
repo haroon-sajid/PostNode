@@ -1,11 +1,11 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { HttpException, Injectable } from '@nestjs/common';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
-import { IntegrationManager } from '@gitroom/nestjs-libraries/integrations/integration.manager';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { IntegrationService } from '@postnode/nestjs-libraries/database/prisma/integrations/integration.service';
+import { IntegrationManager } from '@postnode/nestjs-libraries/integrations/integration.manager';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 @Injectable()
 export class IntegrationConnectTool implements AgentToolInterface {

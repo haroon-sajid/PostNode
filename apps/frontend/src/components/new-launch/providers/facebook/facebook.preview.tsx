@@ -1,13 +1,13 @@
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { textSlicer } from '@gitroom/helpers/utils/count.length';
-import { FACEBOOK_PRESET_MAX_CHARS } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/facebook.dto';
-import { getPresetBackground } from '@gitroom/frontend/components/new-launch/providers/facebook/facebook.background';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { textSlicer } from '@postnode/helpers/utils/count.length';
+import { FACEBOOK_PRESET_MAX_CHARS } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/facebook.dto';
+import { getPresetBackground } from '@postnode/frontend/components/new-launch/providers/facebook/facebook.background';
 import { FC } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
-import { VideoOrImage } from '@gitroom/react/helpers/video.or.image';
+import { VideoOrImage } from '@postnode/react/helpers/video.or.image';
 
 const Icons = () => {
   return (

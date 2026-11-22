@@ -10,19 +10,20 @@ import {
   ErrorCode,
   McpError,
 } from '@modelcontextprotocol/sdk/types.js';
-import { getRelay } from '@gitroom/nestjs-libraries/chat/async.storage';
-import { ssrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
-import { isSafePublicHttpsUrl } from '@gitroom/nestjs-libraries/dtos/webhooks/webhook.url.validator';
-import { OAuthService } from '@gitroom/nestjs-libraries/database/prisma/oauth/oauth.service';
-import { LoadToolsService } from '@gitroom/nestjs-libraries/chat/load.tools.service';
+import { getRelay } from '@postnode/nestjs-libraries/chat/async.storage';
+import { ssrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+import { isSafePublicHttpsUrl } from '@postnode/nestjs-libraries/dtos/webhooks/webhook.url.validator';
+import { OAuthService } from '@postnode/nestjs-libraries/database/prisma/oauth/oauth.service';
+import { LoadToolsService } from '@postnode/nestjs-libraries/chat/load.tools.service';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export interface SelfHostedInstance {
   mcpUrl: string;
   apiKey: string;
 }
 
-// Every Postiz MCP server since v2.19.0 (the first one with the API key /mcp
-// route) has these; a server without them is not a Postiz instance
+// Every MCP server of the app (the API key /mcp route) has these; a server
+// without them is not an instance of the app
 const requiredTools = ['integrationList', 'integrationSchedulePostTool'];
 
 // Tool results are small JSON, an instance never needs this server to hold
@@ -70,7 +71,7 @@ const instanceFetch = async (url: string | URL, init?: RequestInit) => {
   });
 };
 
-// Postiz Cloud relays the MCP connection of a self-hosted Postiz: the person
+// The cloud app relays the MCP connection of a self-hosted install: the person
 // brings the instance and its API key on the consent screen ("Use
 // self-hosted"), and the tool calls of that connection run on the instance
 @Injectable()
@@ -94,7 +95,7 @@ export class McpRelayService {
       );
     } catch {
       throw new HttpException(
-        'Enter the address of your Postiz instance, for example https://postiz.example.com',
+        `Enter the address of your ${getAppName()} instance, for example https://social.example.com`,
         HttpStatus.BAD_REQUEST
       );
     }
@@ -103,7 +104,7 @@ export class McpRelayService {
     // user "me" on company.com) is never sent anywhere
     if (url.username || url.password) {
       throw new HttpException(
-        'Enter the address of your Postiz instance, for example https://postiz.example.com',
+        `Enter the address of your ${getAppName()} instance, for example https://social.example.com`,
         HttpStatus.BAD_REQUEST
       );
     }
@@ -115,14 +116,14 @@ export class McpRelayService {
       apiKey?.trim() || (fromSettings && decodeURIComponent(fromSettings[2]));
     if (!key) {
       throw new HttpException(
-        'Enter the API key of your Postiz instance',
+        `Enter the API key of your ${getAppName()} instance`,
         HttpStatus.BAD_REQUEST
       );
     }
 
     if (!(await isSafePublicHttpsUrl(url.origin))) {
       throw new HttpException(
-        'Your Postiz instance must be reachable from the internet over https',
+        `Your ${getAppName()} instance must be reachable from the internet over https`,
         HttpStatus.BAD_REQUEST
       );
     }
@@ -147,13 +148,13 @@ export class McpRelayService {
       } catch (err) {
         if (err instanceof StreamableHTTPError && err.code === 401) {
           throw new HttpException(
-            'Your Postiz instance rejected this API key',
+            `Your ${getAppName()} instance rejected this API key`,
             HttpStatus.BAD_REQUEST
           );
         }
         if (err instanceof StreamableHTTPError && err.code === 403) {
           throw new HttpException(
-            'Your Postiz instance refused the connection (403), make sure nothing in front of it blocks requests from Postiz Cloud',
+            `Your ${getAppName()} instance refused the connection (403), make sure nothing in front of it blocks requests from ${getAppName()} Cloud`,
             HttpStatus.BAD_REQUEST
           );
         }
@@ -163,7 +164,7 @@ export class McpRelayService {
 
       if (!requiredTools.every((name) => tools.includes(name))) {
         throw new HttpException(
-          `${url.origin} does not look like a Postiz instance, or it runs a version older than v2.19.0`,
+          `${url.origin} does not look like a ${getAppName()} instance, or it runs an older version`,
           HttpStatus.BAD_REQUEST
         );
       }
@@ -177,7 +178,7 @@ export class McpRelayService {
         .filter((name) => !tools.includes(name));
       if (missing.length) {
         throw new HttpException(
-          `Your Postiz instance is missing tools this connection needs (${missing.join(', ')}). Update it to the latest Postiz version and connect again`,
+          `Your ${getAppName()} instance is missing tools this connection needs (${missing.join(', ')}). Update it to the latest version and connect again`,
           HttpStatus.BAD_REQUEST
         );
       }
@@ -186,7 +187,7 @@ export class McpRelayService {
     }
 
     throw new HttpException(
-      `Could not find a Postiz MCP server at ${url.origin}. Paste the MCP URL from Settings > Agents / Dev (Agents, Developers or Public API on older versions) of your instance, and make sure it runs Postiz v2.19.0 or newer`,
+      `Could not find a ${getAppName()} MCP server at ${url.origin}. Paste the MCP URL from Settings > Agents / Dev of your instance, and make sure it runs the latest version`,
       HttpStatus.BAD_REQUEST
     );
   }
@@ -240,17 +241,17 @@ export class McpRelayService {
                 return this.failure(
                   tool,
                   text ||
-                    `${name} returned an unexpected answer from your Postiz instance`
+                    `${name} returned an unexpected answer from your ${getAppName()} instance`
                 );
               }
             }
 
-            // an instance on another Postiz version can answer in another shape
+            // an instance on another version can answer in another shape
             const check = await tool.outputSchema['~standard']?.validate(output);
             if (check?.issues) {
               return this.failure(
                 tool,
-                `Your Postiz instance answered ${name} in a format this connection does not know, update the instance to the latest Postiz version`
+                `Your ${getAppName()} instance answered ${name} in a format this connection does not know, update the instance to the latest version`
               );
             }
 
@@ -290,16 +291,16 @@ export class McpRelayService {
       // an instance older than this server doesn't have every tool yet
       if (text.startsWith('Unknown tool:')) {
         throw new Error(
-          `${name} is not available on your Postiz instance: the feature it needs is not set up there, or the instance needs an update to the latest Postiz version`
+          `${name} is not available on your ${getAppName()} instance: the feature it needs is not set up there, or the instance needs an update to the latest version`
         );
       }
       // arguments this server validated but an older instance doesn't accept
       if (text.startsWith('Tool validation failed')) {
         throw new Error(
-          `Your Postiz instance runs an older version of ${name}, update it to the latest Postiz version to use it`
+          `Your ${getAppName()} instance runs an older version of ${name}, update it to the latest version to use it`
         );
       }
-      throw new Error(text || `${name} failed on your Postiz instance`);
+      throw new Error(text || `${name} failed on your ${getAppName()} instance`);
     }
 
     return result;
@@ -318,14 +319,17 @@ export class McpRelayService {
         fetch: instanceFetch,
       }
     );
-    const client = new Client({ name: 'Postiz Cloud', version: '1.0.0' });
+    const client = new Client({
+      name: `${getAppName()} Cloud`,
+      version: '1.0.0',
+    });
 
     try {
       await client.connect(transport, { timeout: 10000 });
       return await run(client);
     } finally {
-      // instances older than v2.23.0 keep a session per connection, end it
-      // so relayed calls don't pile them up
+      // an instance can keep a session per connection, end it so relayed
+      // calls don't pile them up
       if (transport.sessionId) {
         await transport.terminateSession().catch(() => {});
       }
@@ -366,18 +370,18 @@ export class McpRelayService {
   ) {
     const origin = new URL(instance.mcpUrl).origin;
     if (err instanceof StreamableHTTPError && err.code === 401) {
-      return `Your Postiz instance (${origin}) rejected the saved API key, it was probably rotated, so this connection was removed. Connect Postiz again to keep using your instance`;
+      return `Your ${getAppName()} instance (${origin}) rejected the saved API key, it was probably rotated, so this connection was removed. Connect ${getAppName()} again to keep using your instance`;
     }
     if (err instanceof StreamableHTTPError && err.code === 403) {
-      return `Your Postiz instance (${origin}) refused the request (403), make sure nothing in front of it blocks requests from Postiz Cloud`;
+      return `Your ${getAppName()} instance (${origin}) refused the request (403), make sure nothing in front of it blocks requests from ${getAppName()} Cloud`;
     }
     if (err instanceof McpError && err.code === ErrorCode.RequestTimeout) {
-      return `Your Postiz instance (${origin}) did not answer ${name} in time`;
+      return `Your ${getAppName()} instance (${origin}) did not answer ${name} in time`;
     }
     if (err instanceof McpError) {
-      return `Your Postiz instance (${origin}) could not run ${name}: ${err.message}`;
+      return `Your ${getAppName()} instance (${origin}) could not run ${name}: ${err.message}`;
     }
-    return `Could not reach your Postiz instance (${origin}): ${
+    return `Could not reach your ${getAppName()} instance (${origin}): ${
       err instanceof Error ? err.message : String(err)
     }. Make sure it is online and reachable from the internet`;
   }

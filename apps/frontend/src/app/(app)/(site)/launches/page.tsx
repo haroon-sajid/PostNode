@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
-import { LaunchesComponent } from '@gitroom/frontend/components/launches/launches.component';
+import { LaunchesComponent } from '@postnode/frontend/components/launches/launches.component';
 import { Metadata } from 'next';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 export const metadata: Metadata = {
   title: `${getAppName()} Calendar`,
   description: '',

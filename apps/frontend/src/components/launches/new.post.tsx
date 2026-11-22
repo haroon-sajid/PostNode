@@ -1,17 +1,25 @@
-import React, { useCallback } from 'react';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { fromUtc } from '@gitroom/frontend/components/layout/set.timezone';
-import { useCalendar } from '@gitroom/frontend/components/launches/calendar.context';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { SetSelectionModal } from '@gitroom/frontend/components/launches/calendar';
-import { AddEditModal } from '@gitroom/frontend/components/new-launch/add.edit.modal';
-import { ModalWrapperComponent } from '@gitroom/frontend/components/new-launch/modal.wrapper.component';
+import React, { FC, useCallback } from 'react';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { fromUtc } from '@postnode/frontend/components/layout/set.timezone';
+import {
+  Integrations,
+  useCalendar,
+} from '@postnode/frontend/components/launches/calendar.context';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { SetSelectionModal } from '@postnode/frontend/components/launches/calendar';
+import { AddEditModal } from '@postnode/frontend/components/new-launch/add.edit.modal';
+import { ModalWrapperComponent } from '@postnode/frontend/components/new-launch/modal.wrapper.component';
 
-export const NewPost = () => {
+// The create post button of the calendar, usable outside of it (dashboard):
+// the channels, the sets and what to reload after saving come as props
+export const NewPostButton: FC<{
+  integrations: Integrations[];
+  sets: { name: string; id: string; content: string[] }[];
+  mutate: () => void;
+}> = ({ integrations, sets, mutate }) => {
   const fetch = useFetch();
   const modal = useModals();
-  const { integrations, reloadCalendarView, sets } = useCalendar();
   const t = useT();
 
   const createAPost = useCallback(async () => {
@@ -65,7 +73,7 @@ export const NewPost = () => {
           }))}
           {...(set?.content ? { set: JSON.parse(set.content) } : {})}
           reopenModal={createAPost}
-          mutate={reloadCalendarView}
+          mutate={mutate}
           integrations={integrations}
           date={fromUtc(date)}
         />
@@ -73,7 +81,7 @@ export const NewPost = () => {
       size: '80%',
       title: ``,
     });
-  }, [integrations, sets]);
+  }, [integrations, sets, mutate]);
   return (
     <button
       onClick={createAPost}
@@ -99,5 +107,16 @@ export const NewPost = () => {
         {t('create_new_post', 'Create Post')}
       </div>
     </button>
+  );
+};
+
+export const NewPost = () => {
+  const { integrations, reloadCalendarView, sets } = useCalendar();
+  return (
+    <NewPostButton
+      integrations={integrations}
+      sets={sets}
+      mutate={reloadCalendarView}
+    />
   );
 };

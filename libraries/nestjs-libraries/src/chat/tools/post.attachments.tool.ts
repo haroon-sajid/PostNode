@@ -1,14 +1,14 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
+import { PostsService } from '@postnode/nestjs-libraries/database/prisma/posts/posts.service';
+import { checkAuth } from '@postnode/nestjs-libraries/chat/auth.context';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
 import {
   attachment,
   toMedia,
-} from '@gitroom/nestjs-libraries/chat/tools/integration.schedule.post';
+} from '@postnode/nestjs-libraries/chat/tools/integration.schedule.post';
 
 @Injectable()
 export class PostAttachmentsTool implements AgentToolInterface {

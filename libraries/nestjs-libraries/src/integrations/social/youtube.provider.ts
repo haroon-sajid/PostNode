@@ -5,12 +5,12 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
 import { Integration } from '@prisma/client';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library/build/src/auth/oauth2client';
-import { YoutubeSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/youtube.settings.dto';
+import { YoutubeSettingsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/youtube.settings.dto';
 import {
   BadBody,
   NotEnoughScopes,
@@ -20,15 +20,15 @@ import {
   ValidityMedia,
   rangeReadFailure,
   stripQuery,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import * as process from 'node:process';
 import dayjs from 'dayjs';
 import { createReadStream, statSync } from 'fs';
-import { getSsrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
-import { setHeartbeatDetails } from '@gitroom/nestjs-libraries/temporal/temporal.heartbeat';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { DashboardFunction } from '@gitroom/nestjs-libraries/integrations/dashboard.function.decorator';
+import { getSsrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+import { setHeartbeatDetails } from '@postnode/nestjs-libraries/temporal/temporal.heartbeat';
+import { getAppName } from '@postnode/helpers/utils/app.name';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { DashboardFunction } from '@postnode/nestjs-libraries/integrations/dashboard.function.decorator';
 
 const clientAndYoutube = () => {
   const client = new google.auth.OAuth2({

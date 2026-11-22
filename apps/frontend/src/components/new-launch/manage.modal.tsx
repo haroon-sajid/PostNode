@@ -9,43 +9,43 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { AddEditModalProps } from '@gitroom/frontend/components/new-launch/add.edit.modal';
+import { AddEditModalProps } from '@postnode/frontend/components/new-launch/add.edit.modal';
 import clsx from 'clsx';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { PicksSocialsComponent } from '@gitroom/frontend/components/new-launch/picks.socials.component';
-import { EditorWrapper } from '@gitroom/frontend/components/new-launch/editor';
-import { SelectCurrent } from '@gitroom/frontend/components/new-launch/select.current';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { PicksSocialsComponent } from '@postnode/frontend/components/new-launch/picks.socials.component';
+import { EditorWrapper } from '@postnode/frontend/components/new-launch/editor';
+import { SelectCurrent } from '@postnode/frontend/components/new-launch/select.current';
 import {
   isBrandMark,
   PlatformIcon,
-} from '@gitroom/frontend/components/ui/platform.icon.component';
+} from '@postnode/frontend/components/ui/platform.icon.component';
 import {
   Providers,
   ShowAllProviders,
-} from '@gitroom/frontend/components/new-launch/providers/show.all.providers';
-import { getProviderSettingsMeta } from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { useExistingData } from '@gitroom/frontend/components/launches/helpers/use.existing.data';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+} from '@postnode/frontend/components/new-launch/providers/show.all.providers';
+import { getProviderSettingsMeta } from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { useExistingData } from '@postnode/frontend/components/launches/helpers/use.existing.data';
+import { useLaunchStore } from '@postnode/frontend/components/new-launch/store';
 import {
   DatePicker,
   DatePickerPanel,
-} from '@gitroom/frontend/components/launches/helpers/date.picker';
+} from '@postnode/frontend/components/launches/helpers/date.picker';
 import { useShallow } from 'zustand/react/shallow';
-import { RepeatComponent } from '@gitroom/frontend/components/launches/repeat.component';
+import { RepeatComponent } from '@postnode/frontend/components/launches/repeat.component';
 import {
   Check,
   TagsComponent,
-} from '@gitroom/frontend/components/launches/tags.component';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+} from '@postnode/frontend/components/launches/tags.component';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
 import { capitalize, sortBy } from 'lodash';
-import { SelectCustomer } from '@gitroom/frontend/components/launches/select.customer';
+import { SelectCustomer } from '@postnode/frontend/components/launches/select.customer';
 import { CopilotPopup } from '@copilotkit/react-ui';
-import { DummyCodeComponent } from '@gitroom/frontend/components/new-launch/dummy.code.component';
-import { CreationMethodBadge } from '@gitroom/frontend/components/launches/creation.method.badge';
+import { DummyCodeComponent } from '@postnode/frontend/components/new-launch/dummy.code.component';
+import { CreationMethodBadge } from '@postnode/frontend/components/launches/creation.method.badge';
 import {
   SettingsIcon,
   SettingsOutlineIcon,
@@ -57,27 +57,27 @@ import {
   EyeIcon,
   TagIcon,
   RepeatIcon,
-} from '@gitroom/frontend/components/ui/icons';
+} from '@postnode/frontend/components/ui/icons';
 import {
   MobileTopBar,
   MobileTopBarAction,
-} from '@gitroom/frontend/components/new-launch/mobile.top.bar';
+} from '@postnode/frontend/components/new-launch/mobile.top.bar';
 import {
   BottomSheet,
   BottomSheetButton,
   BottomSheetHeader,
   BottomSheetRow,
-} from '@gitroom/frontend/components/ui/bottom.sheet.component';
-import { useHasScroll } from '@gitroom/frontend/components/ui/is.scroll.hook';
-import { useShortlinkPreference } from '@gitroom/frontend/components/settings/shortlink-preference.component';
+} from '@postnode/frontend/components/ui/bottom.sheet.component';
+import { useHasScroll } from '@postnode/frontend/components/ui/is.scroll.hook';
+import { useShortlinkPreference } from '@postnode/frontend/components/settings/shortlink-preference.component';
 import dayjs from 'dayjs';
-import { Button } from '@gitroom/react/form/button';
-import SafeImage from '@gitroom/react/helpers/safe.image';
+import { Button } from '@postnode/react/form/button';
+import SafeImage from '@postnode/react/helpers/safe.image';
 import { useClickOutside } from '@mantine/hooks';
 import {
   MediaSettingsSection,
   useMediaSettingsValues,
-} from '@gitroom/frontend/components/new-launch/media.settings.section';
+} from '@postnode/frontend/components/new-launch/media.settings.section';
 
 export const ManageModal: FC<AddEditModalProps> = (props) => {
   const t = useT();

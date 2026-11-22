@@ -5,8 +5,8 @@ import {
   IsString,
   Validate,
 } from 'class-validator';
-import { ValidUrlExtension } from '@gitroom/helpers/utils/valid.url.path';
-import { IsSafeWebhookUrl } from '@gitroom/nestjs-libraries/dtos/webhooks/webhook.url.validator';
+import { ValidUrlExtension } from '@postnode/helpers/utils/valid.url.path';
+import { IsSafeWebhookUrl } from '@postnode/nestjs-libraries/dtos/webhooks/webhook.url.validator';
 
 export class UploadDto {
   @IsString()

@@ -5,9 +5,9 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
 import dayjs from 'dayjs';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import {
   BadBody,
   Disconnect,
@@ -15,16 +15,16 @@ import {
   SocialAbstract,
   ValidityMedia,
   rangeReadFailure,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { TikTokDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
-import { setHeartbeatDetails } from '@gitroom/nestjs-libraries/temporal/temporal.heartbeat';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { TikTokDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
+import { timer } from '@postnode/helpers/utils/timer';
+import { getAppName } from '@postnode/helpers/utils/app.name';
+import { setHeartbeatDetails } from '@postnode/nestjs-libraries/temporal/temporal.heartbeat';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 import { createReadStream } from 'fs';
-import { getSsrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+import { getSsrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
 import { Integration } from '@prisma/client';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
 
 @Rules(
   [

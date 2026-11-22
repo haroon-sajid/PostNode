@@ -1,5 +1,5 @@
 import { KMSClient, DecryptCommand } from '@aws-sdk/client-kms';
-import { EncryptionInterface } from '@gitroom/nestjs-libraries/encryption/encryption.interface';
+import { EncryptionInterface } from '@postnode/nestjs-libraries/encryption/encryption.interface';
 
 // Without ENCRYPTION_KMS_ACCESS_KEY the default AWS credential chain is used
 // (AWS_* env vars, ECS task role, EC2 instance profile)

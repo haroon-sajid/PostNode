@@ -4,16 +4,16 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import {
   BadBody,
   RefreshToken,
   SocialAbstract,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { getSsrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
-import { timer } from '@gitroom/helpers/utils/timer';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { getSsrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+import { timer } from '@postnode/helpers/utils/timer';
 import dayjs from 'dayjs';
 import { Integration } from '@prisma/client';
 import { number, string } from 'yup';

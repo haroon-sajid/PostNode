@@ -5,8 +5,8 @@ import {
   setHandler,
   sleep,
 } from '@temporalio/workflow';
-import { Email, emailSignal } from '@gitroom/orchestrator/signals/email.signal';
-import { EmailActivity } from '@gitroom/orchestrator/activities/email.activity';
+import { Email, emailSignal } from '@postnode/orchestrator/signals/email.signal';
+import { EmailActivity } from '@postnode/orchestrator/activities/email.activity';
 
 const { getUserOrgs, sendEmailAsync } = proxyActivities<EmailActivity>({
   startToCloseTimeout: '10 minute',

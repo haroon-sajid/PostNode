@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { useVariables } from '@postnode/react/helpers/variable.context';
 
 export const usePaymentAction = () => {
   const { stripeClient } = useVariables();

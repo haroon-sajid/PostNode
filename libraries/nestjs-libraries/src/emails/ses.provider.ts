@@ -1,5 +1,5 @@
 import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2';
-import { EmailInterface } from '@gitroom/nestjs-libraries/emails/email.interface';
+import { EmailInterface } from '@postnode/nestjs-libraries/emails/email.interface';
 
 // Without SES_ACCESS_KEY the default AWS credential chain is used
 // (AWS_* env vars, ECS task role, EC2 instance profile)

@@ -1,8 +1,8 @@
 import {
   ThirdParty,
   ThirdPartyAbstract,
-} from '@gitroom/nestjs-libraries/3rdparties/thirdparty.interface';
-import { hubspotInstallUrl } from '@gitroom/nestjs-libraries/database/prisma/oauth/oauth.service';
+} from '@postnode/nestjs-libraries/3rdparties/thirdparty.interface';
+import { hubspotInstallUrl } from '@postnode/nestjs-libraries/database/prisma/oauth/oauth.service';
 
 @ThirdParty({
   identifier: 'hubspot',

@@ -3,7 +3,7 @@ import { ModuleRef } from '@nestjs/core';
 import {
   PaymentPlatform,
   PaymentProviderAbstract,
-} from '@gitroom/nestjs-libraries/services/payment/payment.provider.interface';
+} from '@postnode/nestjs-libraries/services/payment/payment.provider.interface';
 
 @Injectable()
 export class PaymentProviderManager {

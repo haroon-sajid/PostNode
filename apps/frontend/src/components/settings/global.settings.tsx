@@ -1,15 +1,15 @@
 'use client';
 
 import React from 'react';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 import dynamic from 'next/dynamic';
-import AuthenticationComponent from '@gitroom/frontend/components/settings/authentication.component';
-import EmailNotificationsComponent from '@gitroom/frontend/components/settings/email-notifications.component';
-import ShortlinkPreferenceComponent from '@gitroom/frontend/components/settings/shortlink-preference.component';
-import DeleteAccountComponent from '@gitroom/frontend/components/settings/delete-account.component';
+import AuthenticationComponent from '@postnode/frontend/components/settings/authentication.component';
+import EmailNotificationsComponent from '@postnode/frontend/components/settings/email-notifications.component';
+import ShortlinkPreferenceComponent from '@postnode/frontend/components/settings/shortlink-preference.component';
+import DeleteAccountComponent from '@postnode/frontend/components/settings/delete-account.component';
 
 const MetricComponent = dynamic(
-  () => import('@gitroom/frontend/components/settings/metric.component'),
+  () => import('@postnode/frontend/components/settings/metric.component'),
   {
     ssr: false,
   }

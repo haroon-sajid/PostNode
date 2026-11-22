@@ -15,8 +15,8 @@ import {
   InputProps,
   UserMessageProps,
 } from '@copilotkit/react-ui';
-import { Input } from '@gitroom/frontend/components/agents/agent.input';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { Input } from '@postnode/frontend/components/agents/agent.input';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
 import {
   CopilotKit,
   useCopilotAction,
@@ -25,21 +25,21 @@ import {
 import {
   MediaPortal,
   PropertiesContext,
-} from '@gitroom/frontend/components/agents/agent';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+} from '@postnode/frontend/components/agents/agent';
+import { useVariables } from '@postnode/react/helpers/variable.context';
 import { useParams } from 'next/navigation';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import {
   Message as CopilotMessage,
   TextMessage,
 } from '@copilotkit/runtime-client-gql';
-import { AddEditModal } from '@gitroom/frontend/components/new-launch/add.edit.modal';
+import { AddEditModal } from '@postnode/frontend/components/new-launch/add.edit.modal';
 import dayjs from 'dayjs';
-import { fromUtc } from '@gitroom/frontend/components/layout/set.timezone';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { ExistingDataContextProvider } from '@gitroom/frontend/components/launches/helpers/use.existing.data';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
+import { fromUtc } from '@postnode/frontend/components/layout/set.timezone';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { ExistingDataContextProvider } from '@postnode/frontend/components/launches/helpers/use.existing.data';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
 
 export const AgentChat: FC = () => {
   const { backendUrl } = useVariables();
@@ -55,7 +55,7 @@ export const AgentChat: FC = () => {
       useSingleEndpoint={true}
       showDevConsole={false}
       enableInspector={false}
-      agent="postiz"
+      agent="assistant"
       properties={{
         integrations: properties,
       }}

@@ -1,14 +1,33 @@
 'use client';
 
 import { useCallback } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useToaster } from '@postnode/react/toaster/toaster';
 export const GoogleProvider = () => {
   const fetch = useFetch();
   const t = useT();
+  const toaster = useToaster();
   const gotoLogin = useCallback(async () => {
-    const link = await (await fetch('/auth/oauth/GOOGLE')).text();
-    window.location.href = link;
+    try {
+      const response = await fetch('/auth/oauth/GOOGLE');
+      if (!response.ok) {
+        throw new Error(
+          `Login link request failed with status ${response.status}`
+        );
+      }
+      const link = await response.text();
+      window.location.href = link;
+    } catch (error) {
+      console.error('Failed to get Google login link:', error);
+      toaster.show(
+        t(
+          'could_not_reach_server',
+          'Could not reach the server, please try again in a moment'
+        ),
+        'warning'
+      );
+    }
   }, []);
   return (
     <div

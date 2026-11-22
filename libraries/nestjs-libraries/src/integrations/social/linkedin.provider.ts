@@ -4,27 +4,27 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeId } from '@postnode/nestjs-libraries/services/make.is';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import sharp from 'sharp';
 import { lookup } from 'mime-types';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
-import { timer } from '@gitroom/helpers/utils/timer';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
+import { timer } from '@postnode/helpers/utils/timer';
 import {
   BadBody,
   RefreshToken,
   SocialAbstract,
   ValidityMedia,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
 import { Integration } from '@prisma/client';
-import { PostPlug } from '@gitroom/helpers/decorators/post.plug';
-import { LinkedinDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/linkedin.dto';
+import { PostPlug } from '@postnode/helpers/decorators/post.plug';
+import { LinkedinDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/linkedin.dto';
 import imageToPDF from 'image-to-pdf';
 import { Readable } from 'stream';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
-import { DashboardFunction } from '@gitroom/nestjs-libraries/integrations/dashboard.function.decorator';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { Tool } from '@postnode/nestjs-libraries/integrations/tool.decorator';
+import { DashboardFunction } from '@postnode/nestjs-libraries/integrations/dashboard.function.decorator';
 
 // Travels through the workflow history between postPending, checkPostStatus
 // and finalizePost - keep it small JSON (media urns and the post content, never

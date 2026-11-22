@@ -1,10 +1,10 @@
 'use client';
 
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
-import { Logo } from '@gitroom/frontend/components/new-layout/logo';
-import { jakartaSans } from '@gitroom/frontend/fonts/plus-jakarta-sans/plus.jakarta.sans.font';
+import { Logo } from '@postnode/frontend/components/new-layout/logo';
+import { jakartaSans } from '@postnode/frontend/fonts/plus-jakarta-sans/plus.jakarta.sans.font';
 const ModeComponent = dynamic(
-  () => import('@gitroom/frontend/components/layout/mode.component'),
+  () => import('@postnode/frontend/components/layout/mode.component'),
   {
     ssr: false,
   }
@@ -12,34 +12,34 @@ const ModeComponent = dynamic(
 
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useVariables } from '@postnode/react/helpers/variable.context';
 import { usePathname, useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
-import { CheckPayment } from '@gitroom/frontend/components/layout/check.payment';
-import { ToolTip } from '@gitroom/frontend/components/layout/top.tip';
-import { ShowMediaBoxModal } from '@gitroom/frontend/components/media/media.component';
-import { ShowLinkedinCompany } from '@gitroom/frontend/components/launches/helpers/linkedin.component';
-import { MediaSettingsLayout } from '@gitroom/frontend/components/launches/helpers/media.settings.component';
-import { Toaster } from '@gitroom/react/toaster/toaster';
-import { ShowPostSelector } from '@gitroom/frontend/components/post-url-selector/post.url.selector';
-import { Support } from '@gitroom/frontend/components/layout/support';
-import { ContinueProvider } from '@gitroom/frontend/components/layout/continue.provider';
-import { ContextWrapper } from '@gitroom/frontend/components/layout/user.context';
+import { CheckPayment } from '@postnode/frontend/components/layout/check.payment';
+import { ToolTip } from '@postnode/frontend/components/layout/top.tip';
+import { ShowMediaBoxModal } from '@postnode/frontend/components/media/media.component';
+import { ShowLinkedinCompany } from '@postnode/frontend/components/launches/helpers/linkedin.component';
+import { MediaSettingsLayout } from '@postnode/frontend/components/launches/helpers/media.settings.component';
+import { Toaster } from '@postnode/react/toaster/toaster';
+import { ShowPostSelector } from '@postnode/frontend/components/post-url-selector/post.url.selector';
+import { Support } from '@postnode/frontend/components/layout/support';
+import { ContinueProvider } from '@postnode/frontend/components/layout/continue.provider';
+import { ContextWrapper } from '@postnode/frontend/components/layout/user.context';
 import { CopilotKit } from '@copilotkit/react-core';
-import { MantineWrapper } from '@gitroom/react/helpers/mantine.wrapper';
-import { Impersonate } from '@gitroom/frontend/components/layout/impersonate';
-import { AnnouncementBanner } from '@gitroom/frontend/components/layout/announcement.banner';
-import { Title } from '@gitroom/frontend/components/layout/title';
-import { TopMenu } from '@gitroom/frontend/components/layout/top.menu';
-import { LanguageComponent } from '@gitroom/frontend/components/layout/language.component';
-import NotificationComponent from '@gitroom/frontend/components/notifications/notification.component';
-import { OrganizationSelector } from '@gitroom/frontend/components/layout/organization.selector';
-import { InvoicesComponent } from '@gitroom/frontend/components/layout/invoices.component';
-import { StreakComponent } from '@gitroom/frontend/components/layout/streak.component';
-import { PreConditionComponent } from '@gitroom/frontend/components/layout/pre-condition.component';
-import { FirstBillingComponent } from '@gitroom/frontend/components/billing/first.billing.component';
-import { setUserTimezone } from '@gitroom/frontend/components/layout/set.timezone';
+import { MantineWrapper } from '@postnode/react/helpers/mantine.wrapper';
+import { Impersonate } from '@postnode/frontend/components/layout/impersonate';
+import { AnnouncementBanner } from '@postnode/frontend/components/layout/announcement.banner';
+import { Title } from '@postnode/frontend/components/layout/title';
+import { TopMenu } from '@postnode/frontend/components/layout/top.menu';
+import { LanguageComponent } from '@postnode/frontend/components/layout/language.component';
+import NotificationComponent from '@postnode/frontend/components/notifications/notification.component';
+import { OrganizationSelector } from '@postnode/frontend/components/layout/organization.selector';
+import { InvoicesComponent } from '@postnode/frontend/components/layout/invoices.component';
+import { StreakComponent } from '@postnode/frontend/components/layout/streak.component';
+import { PreConditionComponent } from '@postnode/frontend/components/layout/pre-condition.component';
+import { FirstBillingComponent } from '@postnode/frontend/components/billing/first.billing.component';
+import { setUserTimezone } from '@postnode/frontend/components/layout/set.timezone';
 
 export const LayoutComponent = ({ children }: { children: ReactNode }) => {
   const fetch = useFetch();

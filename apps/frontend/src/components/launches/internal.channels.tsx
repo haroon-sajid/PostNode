@@ -2,16 +2,16 @@ import { FC, useEffect, useState } from 'react';
 import {
   Integrations,
   useCalendar,
-} from '@gitroom/frontend/components/launches/calendar.context';
-import { PickPlatforms } from '@gitroom/frontend/components/launches/helpers/pick.platform.component';
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { Select } from '@gitroom/react/form/select';
-import { Slider } from '@gitroom/react/form/slider';
-import { Input } from '@gitroom/react/form/input';
-import { Textarea } from '@gitroom/react/form/textarea';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
+} from '@postnode/frontend/components/launches/calendar.context';
+import { PickPlatforms } from '@postnode/frontend/components/launches/helpers/pick.platform.component';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { Select } from '@postnode/react/form/select';
+import { Slider } from '@postnode/react/form/slider';
+import { Input } from '@postnode/react/form/input';
+import { Textarea } from '@postnode/react/form/textarea';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
 import clsx from 'clsx';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 const delayOptions = [
   {
     name: 'Immediately',

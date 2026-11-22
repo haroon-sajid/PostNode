@@ -5,11 +5,11 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import clsx from 'clsx';
 import { useClickAway } from '@uidotdev/usehooks';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useLogout } from '@gitroom/frontend/components/layout/logout.component';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { useLogout } from '@postnode/frontend/components/layout/logout.component';
+import { useMediaDirectory } from '@postnode/react/helpers/use.media.directory';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 
 // name, bio and picture of the signed-in user, edited in Settings > Profile
 export const useUserPersonal = () => {

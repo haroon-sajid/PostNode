@@ -1,6 +1,6 @@
 import { IsArray, IsDefined, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
-import { MediaDto } from '@gitroom/nestjs-libraries/dtos/media/media.dto';
+import { MediaDto } from '@postnode/nestjs-libraries/dtos/media/media.dto';
 
 export class UpdatePostAttachmentsDto {
   @IsDefined()

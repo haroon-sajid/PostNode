@@ -1,8 +1,8 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { Activity, ActivityMethod } from 'nestjs-temporal-core';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { VideoDto } from '@gitroom/nestjs-libraries/dtos/videos/video.dto';
+import { MediaService } from '@postnode/nestjs-libraries/database/prisma/media/media.service';
+import { OrganizationService } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.service';
+import { VideoDto } from '@postnode/nestjs-libraries/dtos/videos/video.dto';
 
 @Injectable()
 @Activity()

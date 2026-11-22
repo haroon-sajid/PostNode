@@ -9,3 +9,12 @@ export const getAppName = () => {
     process.env.NEXT_PUBLIC_APP_NAME || process.env.APP_NAME || DEFAULT_APP_NAME
   );
 };
+
+// URL scheme of the mobile app deep links (postnode://...). A fixed id, not
+// the display name: the mobile app registers it, so renaming the product must
+// not change it
+const APP_SCHEME = 'postnode';
+
+export const getAppScheme = () => {
+  return APP_SCHEME;
+};

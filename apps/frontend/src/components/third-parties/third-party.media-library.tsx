@@ -1,14 +1,14 @@
 'use client';
 
 import React, { FC, useCallback, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import useSWR from 'swr';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { useToaster } from '@postnode/react/toaster/toaster';
 import clsx from 'clsx';
-import { VideoFrame } from '@gitroom/react/helpers/video.frame';
-import { Pagination } from '@gitroom/frontend/components/media/media.component';
+import { VideoFrame } from '@postnode/react/helpers/video.frame';
+import { Pagination } from '@postnode/frontend/components/media/media.component';
 
 const ThirdPartyMediaLibraryBrowser: FC<{
   integration: any;

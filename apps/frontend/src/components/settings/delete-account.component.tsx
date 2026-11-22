@@ -2,14 +2,14 @@
 
 import React, { FC, useCallback, useState } from 'react';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { Button } from '@gitroom/react/form/button';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { setCookie } from '@gitroom/frontend/components/layout/layout.context';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { TrashIcon } from '@gitroom/frontend/components/ui/icons';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { deleteDialog } from '@postnode/react/helpers/delete.dialog';
+import { Button } from '@postnode/react/form/button';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { setCookie } from '@postnode/frontend/components/layout/layout.context';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { TrashIcon } from '@postnode/frontend/components/ui/icons';
 
 interface DeleteAccountInfo {
   hasSubscription: boolean;

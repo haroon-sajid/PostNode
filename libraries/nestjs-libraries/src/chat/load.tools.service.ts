@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { Agent } from '@mastra/core/agent';
 import { openai } from '@ai-sdk/openai';
 import { Memory } from '@mastra/memory';
-import { pStore } from '@gitroom/nestjs-libraries/chat/mastra.store';
+import { pStore } from '@postnode/nestjs-libraries/chat/mastra.store';
 import { array, object, string } from 'zod';
 import { ModuleRef } from '@nestjs/core';
-import { toolList } from '@gitroom/nestjs-libraries/chat/tools/tool.list';
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { toolList } from '@postnode/nestjs-libraries/chat/tools/tool.list';
+import { AgentToolInterface } from '@postnode/nestjs-libraries/chat/agent.tool.interface';
 import dayjs from 'dayjs';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export const AgentState = object({
   proverbs: array(string()).default([]),
@@ -61,8 +61,8 @@ export class LoadToolsService {
   async agent() {
     const tools = await this.loadTools();
     return new Agent({
-      id: 'postiz',
-      name: 'postiz',
+      id: 'assistant',
+      name: 'assistant',
       description:
         'Agent that helps schedule and list social media posts for users',
       instructions: ({ requestContext }) => {

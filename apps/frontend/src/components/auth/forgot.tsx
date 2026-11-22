@@ -1,14 +1,14 @@
 'use client';
 
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
 import Link from 'next/link';
-import { Button } from '@gitroom/react/form/button';
-import { Input } from '@gitroom/react/form/input';
+import { Button } from '@postnode/react/form/button';
+import { Input } from '@postnode/react/form/input';
 import { useMemo, useState } from 'react';
 import { classValidatorResolver } from '@hookform/resolvers/class-validator';
-import { ForgotPasswordDto } from '@gitroom/nestjs-libraries/dtos/auth/forgot.password.dto';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { ForgotPasswordDto } from '@postnode/nestjs-libraries/dtos/auth/forgot.password.dto';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
 type Inputs = {
   email: string;
 };

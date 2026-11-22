@@ -3,39 +3,39 @@
 import {
   AddProviderButton,
   CustomVariables,
-} from '@gitroom/frontend/components/launches/add.provider.component';
+} from '@postnode/frontend/components/launches/add.provider.component';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { capitalize, groupBy, orderBy } from 'lodash';
-import { CalendarWeekProvider } from '@gitroom/frontend/components/launches/calendar.context';
-import { Filters } from '@gitroom/frontend/components/launches/filters';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
+import { CalendarWeekProvider } from '@postnode/frontend/components/launches/calendar.context';
+import { Filters } from '@postnode/frontend/components/launches/filters';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { LoadingComponent } from '@postnode/frontend/components/layout/loading';
 import clsx from 'clsx';
 import { useUser } from '../layout/user.context';
-import { Menu } from '@gitroom/frontend/components/launches/menu/menu';
+import { Menu } from '@postnode/frontend/components/launches/menu/menu';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Integration } from '@prisma/client';
-import ImageWithFallback from '@gitroom/react/helpers/image.with.fallback';
+import ImageWithFallback from '@postnode/react/helpers/image.with.fallback';
 import {
   isBrandMark,
   PlatformIcon,
-} from '@gitroom/frontend/components/ui/platform.icon.component';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+} from '@postnode/frontend/components/ui/platform.icon.component';
+import { useToaster } from '@postnode/react/toaster/toaster';
 import { Calendar } from './calendar';
 import { useDrag, useDrop } from 'react-dnd';
-import { DNDProvider } from '@gitroom/frontend/components/launches/helpers/dnd.provider';
+import { DNDProvider } from '@postnode/frontend/components/launches/helpers/dnd.provider';
 import { GeneratorComponent } from './generator/generator';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { NewPost } from '@gitroom/frontend/components/launches/new.post';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useIntegrationList } from '@gitroom/frontend/components/launches/helpers/use.integration.list';
+import { useVariables } from '@postnode/react/helpers/variable.context';
+import { NewPost } from '@postnode/frontend/components/launches/new.post';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { useIntegrationList } from '@postnode/frontend/components/launches/helpers/use.integration.list';
 import useCookie from 'react-use-cookie';
-import { Onboarding } from '@gitroom/frontend/components/onboarding/onboarding';
-import { ChannelsAfterPayment } from '@gitroom/frontend/components/layout/check.payment';
-import { HubspotInstalled } from '@gitroom/frontend/components/launches/hubspot.installed';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { Input } from '@gitroom/react/form/input';
-import { Button } from '@gitroom/react/form/button';
+import { Onboarding } from '@postnode/frontend/components/onboarding/onboarding';
+import { ChannelsAfterPayment } from '@postnode/frontend/components/layout/check.payment';
+import { HubspotInstalled } from '@postnode/frontend/components/launches/hubspot.installed';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { Input } from '@postnode/react/form/input';
+import { Button } from '@postnode/react/form/button';
 
 export const SVGLine = () => {
   return (

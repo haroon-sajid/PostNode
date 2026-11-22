@@ -1,9 +1,9 @@
 'use client';
 
 import { FC, FormEvent, useCallback, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Input } from '@gitroom/react/form/input';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { Input } from '@postnode/react/form/input';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export const OAuthSelfHosted: FC<{
   appName: string;
@@ -114,8 +114,8 @@ export const OAuthSelfHosted: FC<{
           spellCheck={false}
         />
         <div className="text-[12px] text-gray-400">
-          You can also paste the MCP URL from Settings &gt; Agents (Developers or
-          Public API on older versions) in the Instance URL, it includes the key.
+          You can also paste the MCP URL from Settings &gt; Agents / Dev in the
+          Instance URL, it includes the key.
         </div>
       </div>
 

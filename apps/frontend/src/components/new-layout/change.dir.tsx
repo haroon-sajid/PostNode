@@ -5,7 +5,7 @@ import {
   cookieName,
   fallbackLng,
   rtlLanguages,
-} from '@gitroom/react/translation/i18n.config';
+} from '@postnode/react/translation/i18n.config';
 import i18next from 'i18next';
 import { FC, useEffect } from 'react';
 

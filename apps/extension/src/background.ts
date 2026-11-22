@@ -6,14 +6,24 @@ const EXTENSION_VERSION = '2.0.0';
 const REFRESH_ALARM_NAME = 'cookie-refresh';
 const STORAGE_KEY = 'refreshEntries';
 
-const ALLOWED_ORIGIN_PATTERNS = [
-  /^https?:\/\/localhost(:\d+)?$/,
-  /^https?:\/\/([a-z0-9-]+\.)*postiz\.com$/,
-];
+// The app this extension serves: the FRONTEND_URL it was built with. Only that
+// site (and localhost, for development) may ask for the platform cookies
+const APP_ORIGIN = (() => {
+  try {
+    return new URL(import.meta.env.FRONTEND_URL).origin;
+  } catch {
+    return '';
+  }
+})();
+
+const ALLOWED_ORIGIN_PATTERNS = [/^https?:\/\/localhost(:\d+)?$/];
 
 function isOriginAllowed(origin: string | undefined): boolean {
   if (!origin) return false;
-  return ALLOWED_ORIGIN_PATTERNS.some((pattern) => pattern.test(origin));
+  return (
+    origin === APP_ORIGIN ||
+    ALLOWED_ORIGIN_PATTERNS.some((pattern) => pattern.test(origin))
+  );
 }
 
 async function extractCookies(provider: CookieProvider): Promise<GetCookiesResponse> {

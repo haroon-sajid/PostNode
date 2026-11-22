@@ -4,18 +4,18 @@ import { FC, useMemo } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { YoutubeSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/youtube.settings.dto';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { Input } from '@gitroom/react/form/input';
-import { MediumTags } from '@gitroom/frontend/components/new-launch/providers/medium/medium.tags';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { YoutubeSettingsDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/youtube.settings.dto';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { Input } from '@postnode/react/form/input';
+import { MediumTags } from '@postnode/frontend/components/new-launch/providers/medium/medium.tags';
 import { useWatch } from 'react-hook-form';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { Select } from '@gitroom/react/form/select';
-import { Checkbox } from '@gitroom/react/form/checkbox';
-import { YoutubePreview } from '@gitroom/frontend/components/new-launch/providers/youtube/youtube.preview';
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { Select } from '@postnode/react/form/select';
+import { Checkbox } from '@postnode/react/form/checkbox';
+import { YoutubePreview } from '@postnode/frontend/components/new-launch/providers/youtube/youtube.preview';
+import { useIntegration } from '@postnode/frontend/components/launches/helpers/use.integration';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
 const type = [
   {
     label: 'Public',

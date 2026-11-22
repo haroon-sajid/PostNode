@@ -13,52 +13,52 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { streamUploadOptions } from '@gitroom/nestjs-libraries/upload/multer.stream.engine';
+import { streamUploadOptions } from '@postnode/nestjs-libraries/upload/multer.stream.engine';
 import { omit } from 'lodash';
 import { ApiTags } from '@nestjs/swagger';
-import { GetOrgFromRequest } from '@gitroom/nestjs-libraries/user/org.from.request';
-import { GetIncludeDeletedFromRequest } from '@gitroom/nestjs-libraries/user/include.deleted.from.request';
-import { GetOAuthUserIdFromRequest } from '@gitroom/nestjs-libraries/user/oauth.user.id.from.request';
+import { GetOrgFromRequest } from '@postnode/nestjs-libraries/user/org.from.request';
+import { GetIncludeDeletedFromRequest } from '@postnode/nestjs-libraries/user/include.deleted.from.request';
+import { GetOAuthUserIdFromRequest } from '@postnode/nestjs-libraries/user/oauth.user.id.from.request';
 import { Organization } from '@prisma/client';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
-import { CheckPolicies } from '@gitroom/backend/services/auth/permissions/permissions.ability';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
+import { IntegrationService } from '@postnode/nestjs-libraries/database/prisma/integrations/integration.service';
+import { CheckPolicies } from '@postnode/backend/services/auth/permissions/permissions.ability';
+import { PostsService } from '@postnode/nestjs-libraries/database/prisma/posts/posts.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { GetPostsDto } from '@gitroom/nestjs-libraries/dtos/posts/get.posts.dto';
-import { ChangePostStatusDto } from '@gitroom/nestjs-libraries/dtos/posts/change.post.status.dto';
-import { UpdatePostSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/update.post.settings.dto';
-import { UpdatePostAttachmentsDto } from '@gitroom/nestjs-libraries/dtos/posts/update.post.attachments.dto';
+import { MediaService } from '@postnode/nestjs-libraries/database/prisma/media/media.service';
+import { GetPostsDto } from '@postnode/nestjs-libraries/dtos/posts/get.posts.dto';
+import { ChangePostStatusDto } from '@postnode/nestjs-libraries/dtos/posts/change.post.status.dto';
+import { UpdatePostSettingsDto } from '@postnode/nestjs-libraries/dtos/posts/update.post.settings.dto';
+import { UpdatePostAttachmentsDto } from '@postnode/nestjs-libraries/dtos/posts/update.post.attachments.dto';
 import {
   AuthorizationActions,
   Sections,
-} from '@gitroom/backend/services/auth/permissions/permission.exception.class';
-import { VideoDto } from '@gitroom/nestjs-libraries/dtos/videos/video.dto';
-import { VideoFunctionDto } from '@gitroom/nestjs-libraries/dtos/videos/video.function.dto';
-import { UploadDto } from '@gitroom/nestjs-libraries/dtos/media/upload.dto';
-import { GetMediaDto } from '@gitroom/nestjs-libraries/dtos/media/get.media.dto';
-import { ClippingDto } from '@gitroom/nestjs-libraries/dtos/clipping/clipping.dto';
-import { ConnectLinkDto } from '@gitroom/nestjs-libraries/dtos/integrations/connect.link.dto';
-import { ClippingService } from '@gitroom/nestjs-libraries/database/prisma/clipping/clipping.service';
-import { NotificationService } from '@gitroom/nestjs-libraries/database/prisma/notifications/notification.service';
-import { GetNotificationsDto } from '@gitroom/nestjs-libraries/dtos/notifications/get.notifications.dto';
+} from '@postnode/backend/services/auth/permissions/permission.exception.class';
+import { VideoDto } from '@postnode/nestjs-libraries/dtos/videos/video.dto';
+import { VideoFunctionDto } from '@postnode/nestjs-libraries/dtos/videos/video.function.dto';
+import { UploadDto } from '@postnode/nestjs-libraries/dtos/media/upload.dto';
+import { GetMediaDto } from '@postnode/nestjs-libraries/dtos/media/get.media.dto';
+import { ClippingDto } from '@postnode/nestjs-libraries/dtos/clipping/clipping.dto';
+import { ConnectLinkDto } from '@postnode/nestjs-libraries/dtos/integrations/connect.link.dto';
+import { ClippingService } from '@postnode/nestjs-libraries/database/prisma/clipping/clipping.service';
+import { NotificationService } from '@postnode/nestjs-libraries/database/prisma/notifications/notification.service';
+import { GetNotificationsDto } from '@postnode/nestjs-libraries/dtos/notifications/get.notifications.dto';
 import {
   socialIntegrationList,
   IntegrationManager,
-} from '@gitroom/nestjs-libraries/integrations/integration.manager';
-import { getValidationSchemas } from '@gitroom/nestjs-libraries/chat/validation.schemas.helper';
-import { RefreshIntegrationService } from '@gitroom/nestjs-libraries/integrations/refresh.integration.service';
-import { RefreshToken } from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { PostValidationException } from '@gitroom/backend/api/routes/posts.validation.exception';
-import { UsersService } from '@gitroom/nestjs-libraries/database/prisma/users/users.service';
-import { SuperAdminGuard } from '@gitroom/backend/services/auth/super.admin.guard';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { ioRedis } from '@gitroom/nestjs-libraries/redis/redis.service';
-import { AdminStatsService } from '@gitroom/nestjs-libraries/database/prisma/admin-stats/admin-stats.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { GetOrgActivityDto } from '@gitroom/nestjs-libraries/dtos/analytics/get.org.activity.dto';
-import { ResetCreditsDto } from '@gitroom/nestjs-libraries/dtos/billing/reset.credits.dto';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+} from '@postnode/nestjs-libraries/integrations/integration.manager';
+import { getValidationSchemas } from '@postnode/nestjs-libraries/chat/validation.schemas.helper';
+import { RefreshIntegrationService } from '@postnode/nestjs-libraries/integrations/refresh.integration.service';
+import { RefreshToken } from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { PostValidationException } from '@postnode/backend/api/routes/posts.validation.exception';
+import { UsersService } from '@postnode/nestjs-libraries/database/prisma/users/users.service';
+import { SuperAdminGuard } from '@postnode/backend/services/auth/super.admin.guard';
+import { timer } from '@postnode/helpers/utils/timer';
+import { ioRedis } from '@postnode/nestjs-libraries/redis/redis.service';
+import { AdminStatsService } from '@postnode/nestjs-libraries/database/prisma/admin-stats/admin-stats.service';
+import { OrganizationService } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.service';
+import { GetOrgActivityDto } from '@postnode/nestjs-libraries/dtos/analytics/get.org.activity.dto';
+import { ResetCreditsDto } from '@postnode/nestjs-libraries/dtos/billing/reset.credits.dto';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
 import dayjs from 'dayjs';
 
 @ApiTags('Public API')

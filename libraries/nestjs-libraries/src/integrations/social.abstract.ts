@@ -1,20 +1,20 @@
-import { timer } from '@gitroom/helpers/utils/timer';
+import { timer } from '@postnode/helpers/utils/timer';
 import { Integration } from '@prisma/client';
 import {
   AuthTokenDetails,
   PendingCheckResponse,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
 import { ApplicationFailure } from '@temporalio/activity';
-import { setHeartbeatDetails } from '@gitroom/nestjs-libraries/temporal/temporal.heartbeat';
+import { setHeartbeatDetails } from '@postnode/nestjs-libraries/temporal/temporal.heartbeat';
 import {
   getSsrfSafeAxios,
   getSsrfSafeDispatcher,
-} from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+} from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
 import sharp from 'sharp';
 import { createReadStream, readFileSync, statSync } from 'fs';
 import { resolve, sep } from 'path';
 import { Readable } from 'stream';
-import { DashboardFunction } from '@gitroom/nestjs-libraries/integrations/dashboard.function.decorator';
+import { DashboardFunction } from '@postnode/nestjs-libraries/integrations/dashboard.function.decorator';
 
 // Media reads answer headers in well under a second and the chunk sizes the
 // providers ask for finish in under two, with the slowest healthy read we

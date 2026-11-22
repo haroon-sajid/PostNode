@@ -8,28 +8,28 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
+} from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
 import { lookup } from 'mime-types';
 import sharp from 'sharp';
-import { setHeartbeatDetails } from '@gitroom/nestjs-libraries/temporal/temporal.heartbeat';
+import { setHeartbeatDetails } from '@postnode/nestjs-libraries/temporal/temporal.heartbeat';
 import {
   BadBody,
   RefreshToken,
   SocialAbstract,
   stripQuery,
-} from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { Plug } from '@gitroom/helpers/decorators/plug.decorator';
+} from '@postnode/nestjs-libraries/integrations/social.abstract';
+import { Plug } from '@postnode/helpers/decorators/plug.decorator';
 import { Integration } from '@prisma/client';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { PostPlug } from '@gitroom/helpers/decorators/post.plug';
+import { timer } from '@postnode/helpers/utils/timer';
+import { PostPlug } from '@postnode/helpers/decorators/post.plug';
 import dayjs from 'dayjs';
 import { uniqBy } from 'lodash';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { stripLinks as removeLinks } from '@gitroom/helpers/utils/strip.links';
-import { XDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/x.dto';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
-import { hasExtension } from '@gitroom/helpers/utils/has.extension';
-import { isAllowedUploadPath } from '@gitroom/helpers/utils/valid.url.path';
+import { stripHtmlValidation } from '@postnode/helpers/utils/strip.html.validation';
+import { stripLinks as removeLinks } from '@postnode/helpers/utils/strip.links';
+import { XDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/x.dto';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
+import { hasExtension } from '@postnode/helpers/utils/has.extension';
+import { isAllowedUploadPath } from '@postnode/helpers/utils/valid.url.path';
 
 // Travels through the workflow history between postPending, checkPostStatus
 // and finalizePost - keep it small JSON (media ids and the tweet content).

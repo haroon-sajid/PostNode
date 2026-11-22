@@ -1,9 +1,9 @@
 import React, { FC, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ModalWrapperComponent } from '@gitroom/frontend/components/new-launch/modal.wrapper.component';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { Button } from '@gitroom/react/form/button';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { ModalWrapperComponent } from '@postnode/frontend/components/new-launch/modal.wrapper.component';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { Button } from '@postnode/react/form/button';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 export const PreConditionComponentModal: FC = () => {
   const modal = useModals();

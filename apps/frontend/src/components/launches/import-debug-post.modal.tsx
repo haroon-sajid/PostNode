@@ -1,14 +1,14 @@
 'use client';
 
 import { FC, useCallback, useMemo, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { Button } from '@gitroom/react/form/button';
-import { useIntegrationList } from '@gitroom/frontend/components/launches/helpers/use.integration.list';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useT } from '@postnode/react/translation/get.transation.service.client';
+import { Button } from '@postnode/react/form/button';
+import { useIntegrationList } from '@postnode/frontend/components/launches/helpers/use.integration.list';
 import { useSWRConfig } from 'swr';
 import clsx from 'clsx';
-import { PlatformIcon } from '@gitroom/frontend/components/ui/platform.icon.component';
+import { PlatformIcon } from '@postnode/frontend/components/ui/platform.icon.component';
 
 interface DebugPostData {
   type: string;

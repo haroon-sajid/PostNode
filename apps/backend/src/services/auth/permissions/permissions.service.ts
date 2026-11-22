@@ -1,11 +1,11 @@
 import { Ability, AbilityBuilder, AbilityClass } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
+import { pricing } from '@postnode/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { SubscriptionService } from '@postnode/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { PostsService } from '@postnode/nestjs-libraries/database/prisma/posts/posts.service';
+import { IntegrationService } from '@postnode/nestjs-libraries/database/prisma/integrations/integration.service';
 import dayjs from 'dayjs';
-import { WebhooksService } from '@gitroom/nestjs-libraries/database/prisma/webhooks/webhooks.service';
+import { WebhooksService } from '@postnode/nestjs-libraries/database/prisma/webhooks/webhooks.service';
 import { AuthorizationActions, Sections } from './permission.exception.class';
 
 export type AppAbility = Ability<[AuthorizationActions, Sections]>;
@@ -143,8 +143,8 @@ export class PermissionsService {
       }
 
       if (
-        section === Sections.FEATURED_BY_GITROOM &&
-        options.featured_by_gitroom
+        section === Sections.FEATURED_BY_APP &&
+        options.featured_by_app
       ) {
         can(action, section);
         continue;

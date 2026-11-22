@@ -9,26 +9,26 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
-import { ioRedis } from '@gitroom/nestjs-libraries/redis/redis.service';
-import { ConnectIntegrationDto } from '@gitroom/nestjs-libraries/dtos/integrations/connect.integration.dto';
-import { IntegrationManager } from '@gitroom/nestjs-libraries/integrations/integration.manager';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
-import { CheckPolicies } from '@gitroom/backend/services/auth/permissions/permissions.ability';
+import { ioRedis } from '@postnode/nestjs-libraries/redis/redis.service';
+import { ConnectIntegrationDto } from '@postnode/nestjs-libraries/dtos/integrations/connect.integration.dto';
+import { IntegrationManager } from '@postnode/nestjs-libraries/integrations/integration.manager';
+import { IntegrationService } from '@postnode/nestjs-libraries/database/prisma/integrations/integration.service';
+import { CheckPolicies } from '@postnode/backend/services/auth/permissions/permissions.ability';
 import { ApiTags } from '@nestjs/swagger';
-import { NotEnoughScopesFilter } from '@gitroom/nestjs-libraries/integrations/integration.missing.scopes';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { AuthTokenDetails } from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { NotEnoughScopes } from '@gitroom/nestjs-libraries/integrations/social.abstract';
+import { NotEnoughScopesFilter } from '@postnode/nestjs-libraries/integrations/integration.missing.scopes';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
+import { AuthTokenDetails } from '@postnode/nestjs-libraries/integrations/social/social.integrations.interface';
+import { NotEnoughScopes } from '@postnode/nestjs-libraries/integrations/social.abstract';
 import {
   AuthorizationActions,
   Sections,
-} from '@gitroom/backend/services/auth/permissions/permission.exception.class';
-import { RefreshIntegrationService } from '@gitroom/nestjs-libraries/integrations/refresh.integration.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { getSsrfSafeDispatcher } from '@gitroom/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
-import { ThrottlerRealIpGuard } from '@gitroom/nestjs-libraries/throttler/throttler.provider';
-import { PermissionsService } from '@gitroom/backend/services/auth/permissions/permissions.service';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+} from '@postnode/backend/services/auth/permissions/permission.exception.class';
+import { RefreshIntegrationService } from '@postnode/nestjs-libraries/integrations/refresh.integration.service';
+import { OrganizationService } from '@postnode/nestjs-libraries/database/prisma/organizations/organization.service';
+import { getSsrfSafeDispatcher } from '@postnode/nestjs-libraries/dtos/webhooks/ssrf.safe.dispatcher';
+import { ThrottlerRealIpGuard } from '@postnode/nestjs-libraries/throttler/throttler.provider';
+import { PermissionsService } from '@postnode/backend/services/auth/permissions/permissions.service';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 
 @ApiTags('Integrations')
 @Controller('/integrations')

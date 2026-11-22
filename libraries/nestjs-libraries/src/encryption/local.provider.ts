@@ -1,4 +1,4 @@
-import { EncryptionInterface } from '@gitroom/nestjs-libraries/encryption/encryption.interface';
+import { EncryptionInterface } from '@postnode/nestjs-libraries/encryption/encryption.interface';
 
 export class LocalProvider implements EncryptionInterface {
   name = 'local';

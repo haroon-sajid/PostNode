@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { Agent } from '@gitroom/frontend/components/agents/agent';
-import { getAppName } from '@gitroom/helpers/utils/app.name';
+import { Agent } from '@postnode/frontend/components/agents/agent';
+import { getAppName } from '@postnode/helpers/utils/app.name';
 export const metadata: Metadata = {
   title: `${getAppName()} - Agent`,
   description: 'agents',

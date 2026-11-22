@@ -3,12 +3,12 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import useSWR from 'swr';
 import copy from 'copy-to-clipboard';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { Button } from '@gitroom/react/form/button';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
+import { useFetch } from '@postnode/helpers/utils/custom.fetch';
+import { useUser } from '@postnode/frontend/components/layout/user.context';
+import { useToaster } from '@postnode/react/toaster/toaster';
+import { useModals } from '@postnode/frontend/components/layout/new-modal';
+import { Button } from '@postnode/react/form/button';
+import { LoadingComponent } from '@postnode/frontend/components/layout/loading';
 
 interface ErrorRow {
   id: string;

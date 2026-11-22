@@ -4,14 +4,14 @@ import { FC } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { Input } from '@gitroom/react/form/input';
-import { Select } from '@gitroom/react/form/select';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { WordpressPostType } from '@gitroom/frontend/components/new-launch/providers/wordpress/wordpress.post.type';
-import { WordpressTerms } from '@gitroom/frontend/components/new-launch/providers/wordpress/wordpress.terms';
-import { MediaComponent } from '@gitroom/frontend/components/media/media.component';
-import { WordpressDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/wordpress.dto';
+} from '@postnode/frontend/components/new-launch/providers/high.order.provider';
+import { Input } from '@postnode/react/form/input';
+import { Select } from '@postnode/react/form/select';
+import { useSettings } from '@postnode/frontend/components/launches/helpers/use.values';
+import { WordpressPostType } from '@postnode/frontend/components/new-launch/providers/wordpress/wordpress.post.type';
+import { WordpressTerms } from '@postnode/frontend/components/new-launch/providers/wordpress/wordpress.terms';
+import { MediaComponent } from '@postnode/frontend/components/media/media.component';
+import { WordpressDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/wordpress.dto';
 
 const WordpressSettings: FC = () => {
   const form = useSettings();

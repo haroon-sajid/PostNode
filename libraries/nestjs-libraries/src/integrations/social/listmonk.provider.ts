@@ -1,4 +1,4 @@
-import { makeSecureId } from '@gitroom/nestjs-libraries/services/make.secure.id';
+import { makeSecureId } from '@postnode/nestjs-libraries/services/make.secure.id';
 import { SocialAbstract } from '../social.abstract';
 import {
   AuthTokenDetails,
@@ -8,11 +8,11 @@ import {
 } from './social.integrations.interface';
 import dayjs from 'dayjs';
 import { Integration } from '@prisma/client';
-import { ListmonkDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/listmonk.dto';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
+import { ListmonkDto } from '@postnode/nestjs-libraries/dtos/posts/providers-settings/listmonk.dto';
+import { AuthService } from '@postnode/helpers/auth/auth.service';
 import slugify from 'slugify';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
+import { Tool } from '@postnode/nestjs-libraries/integrations/tool.decorator';
+import { Rules } from '@postnode/nestjs-libraries/chat/rules.description.decorator';
 
 @Rules(
   'ListMonk sends the content as an email: pictures go inside the content as <img src="..."> where they should appear, the src must be a picture from the media library (upload it with uploadFromUrlTool first), attachments are not sent'

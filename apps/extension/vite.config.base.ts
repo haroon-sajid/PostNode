@@ -15,6 +15,19 @@ const localize = false;
 
 const merge = isDev ? devManifest : ({} as ManifestV3Export);
 
+// The app may message the extension: FRONTEND_URL of the build, as a match
+// pattern without the port (a pattern matches every port of its host)
+const appMatches = (() => {
+  try {
+    const url = new URL(
+      import.meta.env?.FRONTEND_URL || process?.env?.FRONTEND_URL
+    );
+    return [`${url.protocol}//${url.hostname}/*`];
+  } catch {
+    return [];
+  }
+})();
+
 export const baseManifest = {
   ...manifest,
   host_permissions: [
@@ -25,6 +38,11 @@ export const baseManifest = {
   permissions: [...(manifest.permissions || [])],
   version: pkg.version,
   ...merge,
+  externally_connectable: {
+    matches: [
+      ...new Set([...manifest.externally_connectable.matches, ...appMatches]),
+    ],
+  },
   ...(localize
     ? {
         name: '__MSG_extName__',
