@@ -26,8 +26,11 @@ services:
     volumes:
       - postnode-config:/config/
       - postnode-uploads:/uploads/
+    # Only reachable from this machine: on a server, the HTTPS reverse proxy
+    # (e.g. Caddy) forwards to it. Docker ports skip the server firewall, so
+    # without 127.0.0.1 anyone could reach the app over plain http.
     ports:
-      - '4007:5000'
+      - '127.0.0.1:4007:5000'
     networks:
       - postnode-network
       - temporal-network
@@ -75,6 +78,7 @@ services:
   temporal-elasticsearch:
     container_name: temporal-elasticsearch
     image: elasticsearch:7.17.27
+    restart: unless-stopped
     environment:
       - cluster.routing.allocation.disk.threshold_enabled=true
       - cluster.routing.allocation.disk.watermark.low=512mb
@@ -88,11 +92,12 @@ services:
     expose:
       - 9200
     volumes:
-      - /var/lib/elasticsearch/data
+      - temporal-elasticsearch-data:/usr/share/elasticsearch/data
 
   temporal-postgresql:
     container_name: temporal-postgresql
     image: postgres:16.9
+    restart: unless-stopped
     environment:
       POSTGRES_USER: temporal
       POSTGRES_PASSWORD: ${TEMPORAL_DB_PASSWORD:?Set TEMPORAL_DB_PASSWORD in .env}
@@ -100,8 +105,10 @@ services:
       - temporal-network
     expose:
       - 5432
+    # Holds the scheduled posts' workflows: a named volume, so it survives
+    # `docker compose down` and image updates
     volumes:
-      - /var/lib/postgresql/data
+      - temporal-postgres-data:/var/lib/postgresql/data
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U temporal']
       interval: 5s
@@ -153,6 +160,7 @@ services:
   temporal-ui:
     container_name: temporal-ui
     image: temporalio/ui:2.34.0
+    restart: unless-stopped
     environment:
       - TEMPORAL_ADDRESS=temporal:7233
       - TEMPORAL_CORS_ORIGINS=http://127.0.0.1:3000
@@ -172,6 +180,12 @@ volumes:
     external: false
 
   postnode-uploads:
+    external: false
+
+  temporal-postgres-data:
+    external: false
+
+  temporal-elasticsearch-data:
     external: false
 
 networks:
