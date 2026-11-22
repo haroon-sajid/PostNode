@@ -1,0 +1,16 @@
+import { SettingsPopup } from '@gitroom/frontend/components/layout/settings.component';
+export const dynamic = 'force-dynamic';
+import { Metadata } from 'next';
+import { getAppName } from '@gitroom/helpers/utils/app.name';
+export const metadata: Metadata = {
+  title: `${getAppName()} Settings`,
+  description: '',
+};
+export default async function Index(props: {
+  searchParams: Promise<{
+    code: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  return <SettingsPopup />;
+}

@@ -1,0 +1,182 @@
+# PostNode: builds the app from this repository and runs it with its services.
+# Every password and secret comes from .env (see .env.example); none has a default.
+# The image builds for the CPU of the machine you run this on (amd64 or arm64).
+# To build both at once: docker buildx build --platform linux/amd64,linux/arm64 .
+services:
+  postnode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: postnode:local
+    container_name: postnode
+    restart: always
+    env_file: .env
+    environment:
+      MAIN_URL: ${POSTNODE_URL:-http://localhost:4007}
+      FRONTEND_URL: ${POSTNODE_URL:-http://localhost:4007}
+      NEXT_PUBLIC_BACKEND_URL: ${POSTNODE_URL:-http://localhost:4007}/api
+      BACKEND_INTERNAL_URL: http://localhost:3000
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+      DATABASE_URL: postgresql://${POSTGRES_USER:?Set POSTGRES_USER in .env}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postnode-postgres:5432/${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      REDIS_URL: redis://postnode-redis:6379
+      TEMPORAL_ADDRESS: temporal:7233
+      IS_GENERAL: 'true'
+      STORAGE_PROVIDER: local
+      UPLOAD_DIRECTORY: /uploads
+    volumes:
+      - postnode-config:/config/
+      - postnode-uploads:/uploads/
+    ports:
+      - '4007:5000'
+    networks:
+      - postnode-network
+      - temporal-network
+    depends_on:
+      postnode-postgres:
+        condition: service_healthy
+      postnode-redis:
+        condition: service_healthy
+
+  postnode-postgres:
+    image: postgres:17.5-alpine
+    container_name: postnode-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+    volumes:
+      - postnode-postgres-data:/var/lib/postgresql/data
+    networks:
+      - postnode-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  postnode-redis:
+    image: redis:7.2.7
+    container_name: postnode-redis
+    restart: always
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - postnode-redis-data:/data
+    networks:
+      - postnode-network
+
+  # -----------------------
+  # Temporal (runs the scheduled publishing)
+  # -----------------------
+  temporal-elasticsearch:
+    container_name: temporal-elasticsearch
+    image: elasticsearch:7.17.27
+    environment:
+      - cluster.routing.allocation.disk.threshold_enabled=true
+      - cluster.routing.allocation.disk.watermark.low=512mb
+      - cluster.routing.allocation.disk.watermark.high=256mb
+      - cluster.routing.allocation.disk.watermark.flood_stage=128mb
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+      - xpack.security.enabled=false
+    networks:
+      - temporal-network
+    expose:
+      - 9200
+    volumes:
+      - /var/lib/elasticsearch/data
+
+  temporal-postgresql:
+    container_name: temporal-postgresql
+    image: postgres:16.9
+    environment:
+      POSTGRES_USER: temporal
+      POSTGRES_PASSWORD: ${TEMPORAL_DB_PASSWORD:?Set TEMPORAL_DB_PASSWORD in .env}
+    networks:
+      - temporal-network
+    expose:
+      - 5432
+    volumes:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U temporal']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  temporal:
+    container_name: temporal
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:7233:7233'
+    image: temporalio/auto-setup:1.28.1
+    depends_on:
+      temporal-postgresql:
+        condition: service_healthy
+      temporal-elasticsearch:
+        condition: service_started
+    environment:
+      - DB=postgres12
+      - DB_PORT=5432
+      - POSTGRES_USER=temporal
+      - POSTGRES_PWD=${TEMPORAL_DB_PASSWORD:?Set TEMPORAL_DB_PASSWORD in .env}
+      - POSTGRES_SEEDS=temporal-postgresql
+      - DYNAMIC_CONFIG_FILE_PATH=config/dynamicconfig/development-sql.yaml
+      - ENABLE_ES=true
+      - ES_SEEDS=temporal-elasticsearch
+      - ES_VERSION=v7
+      - TEMPORAL_NAMESPACE=default
+    networks:
+      - temporal-network
+    volumes:
+      - ./docker/temporal:/etc/temporal/config/dynamicconfig
+    labels:
+      kompose.volume.type: configMap
+
+  temporal-admin-tools:
+    container_name: temporal-admin-tools
+    image: temporalio/admin-tools:1.28.1-tctl-1.18.4-cli-1.4.1
+    environment:
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_CLI_ADDRESS=temporal:7233
+    networks:
+      - temporal-network
+    stdin_open: true
+    depends_on:
+      - temporal
+    tty: true
+
+  temporal-ui:
+    container_name: temporal-ui
+    image: temporalio/ui:2.34.0
+    environment:
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_CORS_ORIGINS=http://127.0.0.1:3000
+    networks:
+      - temporal-network
+    ports:
+      - '127.0.0.1:8080:8080'
+
+volumes:
+  postnode-postgres-data:
+    external: false
+
+  postnode-redis-data:
+    external: false
+
+  postnode-config:
+    external: false
+
+  postnode-uploads:
+    external: false
+
+networks:
+  postnode-network:
+    external: false
+  temporal-network:
+    driver: bridge
+    name: temporal-network
